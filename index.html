@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Summer Dreams — Apartamentos Vacacionales de Lujo</title>
   <meta name="description" content="Descubre alquileres de apartamentos vacacionales de lujo en los destinos más deseados del mundo." />
+
+  <!-- ═══ GOOGLE ANALYTICS ═══════════════════════════════════
+       Reemplaza G-XXXXXXXXXX con tu ID de Google Analytics.
+       Para obtenerlo: analytics.google.com → Crear cuenta → 
+       Crear propiedad → Flujo de datos web → copiar "ID de medición"
+  ══════════════════════════════════════════════════════════ -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -33,7 +47,7 @@
     #navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(20,20,20,.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(184,140,50,.2); }
     .nav-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: .6rem 1.5rem; }
     .nav-logo { display: flex; align-items: center; text-decoration: none; }
-    .nav-logo-text { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; letter-spacing: 1px; color: var(--gold); text-decoration: none; transition: all .3s ease; }
+    .nav-logo-text { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; letter-spacing: 1px; color: var(--gold); text-decoration: none; transition: all .3s; }
     .nav-logo-text:hover { color: var(--gold-light); text-shadow: 0 0 10px rgba(212,175,55,.4); }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { font-family: var(--font-body); font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.65); text-decoration: none; transition: color .3s; }
@@ -47,25 +61,10 @@
     @media (max-width: 768px) { .nav-links { display: none; } .nav-burger { display: block; } }
 
     /* ── LANG SWITCHER ── */
-    .lang-switcher {
-      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
-      display: flex; gap: .75rem; z-index: 3;
-      animation: fadeIn 1s 1s ease both; opacity: 0;
-    }
-    .lang-btn {
-      background: rgba(255,255,255,.1);
-      border: 1px solid rgba(184,140,50,.5);
-      color: rgba(255,255,255,.8);
-      font-family: var(--font-body); font-size: .7rem; font-weight: 600;
-      letter-spacing: .12em; text-transform: uppercase;
-      padding: .55rem 1.2rem; border-radius: 2px; cursor: pointer;
-      backdrop-filter: blur(6px);
-      transition: all .3s;
-      display: flex; align-items: center; gap: .4rem;
-    }
+    .lang-switcher { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; gap: .75rem; z-index: 3; animation: fadeIn 1s 1s ease both; opacity: 0; }
+    .lang-btn { background: rgba(255,255,255,.1); border: 1px solid rgba(184,140,50,.5); color: rgba(255,255,255,.8); font-family: var(--font-body); font-size: .7rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: .55rem 1.2rem; border-radius: 2px; cursor: pointer; backdrop-filter: blur(6px); transition: all .3s; display: flex; align-items: center; gap: .4rem; }
     .lang-btn:hover { background: rgba(184,140,50,.25); border-color: var(--gold); color: #fff; }
     .lang-btn.active { background: var(--gold-grad); border-color: transparent; color: var(--dark); font-weight: 700; }
-    .lang-btn .flag { font-size: 1rem; }
 
     /* ── HERO ── */
     #inicio { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
@@ -99,6 +98,29 @@
     .apt-desc { font-size: .82rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.3rem; }
     .apt-btn { display: block; width: 100%; padding: .85rem; border-radius: 2px; text-align: center; }
 
+    /* ── LIGHTBOX GALERÍA ── */
+    .lightbox-overlay {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,.92); backdrop-filter: blur(8px);
+      flex-direction: column; align-items: center; justify-content: center;
+      padding: 1rem;
+    }
+    .lightbox-overlay.open { display: flex; }
+    .lightbox-header { width: 100%; max-width: 900px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .lightbox-title { font-family: var(--font-display); color: #fff; font-size: 1.4rem; font-weight: 600; }
+    .lightbox-close { background: none; border: none; color: rgba(255,255,255,.7); cursor: pointer; font-size: 1.8rem; line-height: 1; transition: color .2s; }
+    .lightbox-close:hover { color: var(--gold); }
+    .lightbox-main { position: relative; width: 100%; max-width: 900px; }
+    .lightbox-main img { width: 100%; max-height: 60vh; object-fit: cover; border-radius: 2px; display: block; }
+    .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,.5); border: 1px solid rgba(184,140,50,.4); color: var(--gold); width: 44px; height: 44px; border-radius: 50%; font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .2s; }
+    .lightbox-nav:hover { background: rgba(184,140,50,.3); }
+    .lightbox-prev { left: -1.5rem; }
+    .lightbox-next { right: -1.5rem; }
+    .lightbox-thumbs { display: flex; gap: .5rem; margin-top: 1rem; flex-wrap: wrap; justify-content: center; max-width: 900px; }
+    .lightbox-thumb { width: 70px; height: 50px; object-fit: cover; border-radius: 2px; cursor: pointer; opacity: .55; transition: opacity .2s, border .2s; border: 2px solid transparent; }
+    .lightbox-thumb.active { opacity: 1; border-color: var(--gold); }
+    .lightbox-counter { color: rgba(255,255,255,.45); font-size: .75rem; margin-top: .75rem; font-family: var(--font-body); letter-spacing: .1em; }
+
     /* ── ABOUT ── */
     #nosotros { background: var(--dark); }
     #nosotros .section-title { color: #fff; }
@@ -125,25 +147,54 @@
     .svc-title { font-family: var(--font-display); font-size: .9rem; font-weight: 600; margin-bottom: .5rem; }
     .svc-desc { font-size: .75rem; color: var(--muted); line-height: 1.65; }
 
+    /* ── RESEÑAS ── */
+    #resenas { background: var(--dark); }
+    #resenas .section-title { color: #fff; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+    .review-card { background: var(--dark-surf); border: 1px solid rgba(184,140,50,.15); border-radius: 2px; padding: 1.75rem; transition: border-color .3s, transform .3s; }
+    .review-card:hover { border-color: rgba(184,140,50,.4); transform: translateY(-3px); }
+    .review-stars { display: flex; gap: .2rem; margin-bottom: .9rem; }
+    .review-stars span { color: var(--gold); font-size: 1rem; }
+    .review-text { font-family: var(--font-accent); font-size: 1.05rem; color: rgba(255,255,255,.75); line-height: 1.75; font-style: italic; margin-bottom: 1.2rem; }
+    .review-author { display: flex; align-items: center; gap: .75rem; }
+    .review-avatar { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(184,140,50,.3); }
+    .review-name { font-family: var(--font-body); font-size: .8rem; font-weight: 600; color: #fff; }
+    .review-apt { font-size: .7rem; color: var(--gold); margin-top: .15rem; }
+
     /* ── CONTACT ── */
-    #contacto { background: var(--dark); }
-    #contacto .section-title { color: #fff; }
+    #contacto { background: hsl(40,20%,97%); }
+    #contacto .section-title { color: var(--dark); }
+    #contacto .section-eyebrow { color: var(--gold); }
     .contact-grid { display: grid; gap: 3rem; max-width: 900px; margin: 0 auto; }
     @media (min-width: 768px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
     .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-    .contact-form input, .contact-form textarea { background: var(--dark-surf); border: 1px solid rgba(184,140,50,.2); border-radius: 2px; padding: .85rem 1.2rem; font-family: var(--font-body); font-size: .82rem; color: #fff; outline: none; transition: border-color .3s; resize: none; }
-    .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,.28); }
+    .contact-form input, .contact-form textarea { background: #fff; border: 1px solid rgba(0,0,0,.15); border-radius: 2px; padding: .85rem 1.2rem; font-family: var(--font-body); font-size: .82rem; color: var(--dark); outline: none; transition: border-color .3s; resize: none; }
+    .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(0,0,0,.35); }
     .contact-form input:focus, .contact-form textarea:focus { border-color: var(--gold); }
     .contact-form .submit-btn { padding: 1rem; border-radius: 2px; }
     .contact-info { display: flex; flex-direction: column; justify-content: center; gap: 2rem; }
     .info-row { display: flex; align-items: flex-start; gap: 1rem; }
     .info-row svg { color: var(--gold); margin-top: .15rem; flex-shrink: 0; }
-    .info-label { font-family: var(--font-display); color: #fff; font-size: .95rem; font-weight: 600; margin-bottom: .2rem; }
-    .info-val { font-size: .82rem; color: rgba(255,255,255,.5); }
+    .info-label { font-family: var(--font-display); color: var(--dark); font-size: .95rem; font-weight: 600; margin-bottom: .2rem; }
+    .info-val { font-size: .82rem; color: var(--muted); }
     .social-row { display: flex; gap: .75rem; padding-top: .5rem; }
-    .social-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(184,140,50,.3); display: flex; align-items: center; justify-content: center; background: none; cursor: pointer; text-decoration: none; transition: background .3s; }
+    .social-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(184,140,50,.4); display: flex; align-items: center; justify-content: center; background: none; cursor: pointer; text-decoration: none; transition: background .3s; }
     .social-btn:hover { background: rgba(184,140,50,.1); }
     .social-btn svg { color: var(--gold); }
+
+    /* ── MAPA ── */
+    #mapa { padding: 0; }
+    .map-header { text-align: center; padding: 4rem 1.5rem 2rem; background: hsl(40,20%,97%); }
+    .map-header .section-eyebrow { font-family: var(--font-accent); font-size: 1.15rem; color: var(--gold); font-style: italic; margin-bottom: .4rem; }
+    .map-header .section-title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; margin-bottom: 1rem; }
+    .map-header .section-rule { width: 80px; height: 2px; background: var(--gold-grad); margin: 0 auto; }
+    /* ══════════════════════════════════════════════════════════
+       MAPA DE GOOGLE: Para añadir TU mapa real:
+       1. Ve a maps.google.com y busca tu dirección
+       2. Haz clic en "Compartir" → "Insertar un mapa"
+       3. Copia el código <iframe> y reemplaza el iframe de abajo
+    ══════════════════════════════════════════════════════════ */
+    .map-embed { width: 100%; height: 420px; border: none; display: block; filter: grayscale(20%); }
 
     /* ── FOOTER ── */
     footer { background: var(--dark); border-top: 1px solid rgba(184,140,50,.1); padding: 2rem 1.5rem; text-align: center; }
@@ -165,20 +216,17 @@
       <a href="#inicio" class="nav-logo">
         <span class="nav-logo-text">Summer Dreams</span>
       </a>
-      <ul class="nav-links" id="nav-links">
+      <ul class="nav-links">
         <li><a href="#inicio"       data-i18n="nav_inicio">Inicio</a></li>
         <li><a href="#apartamentos" data-i18n="nav_apart">Apartamentos</a></li>
         <li><a href="#nosotros"     data-i18n="nav_about">Sobre Nosotros</a></li>
         <li><a href="#servicios"    data-i18n="nav_serv">Servicios</a></li>
+        <li><a href="#resenas"      data-i18n="nav_reviews">Reseñas</a></li>
         <li><a href="#contacto"     data-i18n="nav_contact">Contacto</a></li>
       </ul>
       <button class="nav-burger" id="burger" aria-label="Toggle menu">
-        <svg id="burger-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-        </svg>
-        <svg id="close-icon" style="display:none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
+        <svg id="burger-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="close-icon" style="display:none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
     <div class="nav-mobile" id="mobile-menu">
@@ -186,6 +234,7 @@
       <a href="#apartamentos"  onclick="closeMobile()" data-i18n="nav_apart">Apartamentos</a>
       <a href="#nosotros"      onclick="closeMobile()" data-i18n="nav_about">Sobre Nosotros</a>
       <a href="#servicios"     onclick="closeMobile()" data-i18n="nav_serv">Servicios</a>
+      <a href="#resenas"       onclick="closeMobile()" data-i18n="nav_reviews">Reseñas</a>
       <a href="#contacto"      onclick="closeMobile()" data-i18n="nav_contact">Contacto</a>
     </div>
   </nav>
@@ -198,11 +247,10 @@
       <img src="img/logosummer.png" alt="Summer Dreams" class="hero-logo" />
       <a href="#apartamentos" class="hero-cta gold-btn" data-i18n="hero_cta">Ver Apartamentos</a>
     </div>
-    <!-- SELECTOR DE IDIOMA -->
     <div class="lang-switcher">
-      <button class="lang-btn active" onclick="setLang('es')"><span class="flag">🇪🇸</span> Español</button>
-      <button class="lang-btn"        onclick="setLang('ru')"><span class="flag">🇷🇺</span> Русский</button>
-      <button class="lang-btn"        onclick="setLang('en')"><span class="flag">🇬🇧</span> English</button>
+      <button class="lang-btn active" onclick="setLang('es')">🇪🇸 Español</button>
+      <button class="lang-btn"        onclick="setLang('ru')">🇷🇺 Русский</button>
+      <button class="lang-btn"        onclick="setLang('en')">🇬🇧 English</button>
     </div>
   </section>
 
@@ -211,7 +259,7 @@
     <div class="section-inner">
       <div class="section-header reveal">
         <p class="section-eyebrow" data-i18n="apt_eyebrow">Descubre</p>
-        <h2 class="section-title" data-i18n="apt_title">Nuestros Apartamentos</h2>
+        <h2 class="section-title"  data-i18n="apt_title">Nuestros Apartamentos</h2>
         <div class="section-rule"></div>
       </div>
       <div class="apt-grid" id="apt-grid"></div>
@@ -227,7 +275,7 @@
         <div class="section-rule"></div>
       </div>
       <p class="about-text reveal" data-i18n="about_text">
-        Durante más de 15 años, Summer Dreams ha reunido una colección exclusiva de apartamentos vacacionales de lujo en los destinos más deseados del mundo. Creemos que cada viajero merece una experiencia extraordinaria, desde el momento de la reserva hasta la despedida. Nuestro compromiso con la calidad, el profesionalismo y el servicio personalizado nos distingue.
+        Durante más de 15 años, Summer Dreams ha reunido una colección exclusiva de apartamentos vacacionales de lujo en los destinos más deseados del mundo.
       </p>
       <div class="stats-grid" id="stats-grid"></div>
     </div>
@@ -238,10 +286,22 @@
     <div class="section-inner">
       <div class="section-header reveal">
         <p class="section-eyebrow" data-i18n="serv_eyebrow">Lo Que Ofrecemos</p>
-        <h2 class="section-title" data-i18n="serv_title">Nuestros Servicios</h2>
+        <h2 class="section-title"  data-i18n="serv_title">Nuestros Servicios</h2>
         <div class="section-rule"></div>
       </div>
       <div class="services-grid" id="services-grid"></div>
+    </div>
+  </section>
+
+  <!-- RESEÑAS -->
+  <section id="resenas">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <p class="section-eyebrow" style="color:var(--gold)" data-i18n="rev_eyebrow">Lo Que Dicen</p>
+        <h2 class="section-title"  data-i18n="rev_title">Reseñas de Clientes</h2>
+        <div class="section-rule"></div>
+      </div>
+      <div class="reviews-grid" id="reviews-grid"></div>
     </div>
   </section>
 
@@ -249,15 +309,15 @@
   <section id="contacto">
     <div class="section-inner">
       <div class="section-header reveal">
-        <p class="section-eyebrow" style="color:var(--gold)" data-i18n="contact_eyebrow">Ponte en Contacto</p>
-        <h2 class="section-title" data-i18n="contact_title">Contáctanos</h2>
+        <p class="section-eyebrow" data-i18n="contact_eyebrow">Ponte en Contacto</p>
+        <h2 class="section-title"  data-i18n="contact_title">Contáctanos</h2>
         <div class="section-rule"></div>
       </div>
       <div class="contact-grid">
         <form class="contact-form reveal" id="contact-form">
-          <input type="text"  name="name"    data-i18n-placeholder="form_name"    placeholder="Tu Nombre"   required />
-          <input type="email" name="email"   data-i18n-placeholder="form_email"   placeholder="Tu Email"    required />
-          <textarea           name="message" data-i18n-placeholder="form_message" placeholder="Tu Mensaje"  rows="5" required></textarea>
+          <input type="text"  name="name"    data-i18n-placeholder="form_name"    placeholder="Tu Nombre"  required />
+          <input type="email" name="email"   data-i18n-placeholder="form_email"   placeholder="Tu Email"   required />
+          <textarea           name="message" data-i18n-placeholder="form_message" placeholder="Tu Mensaje" rows="5" required></textarea>
           <button type="submit" class="gold-btn submit-btn" data-i18n="form_send">Enviar Mensaje</button>
         </form>
         <div class="contact-info reveal">
@@ -289,10 +349,47 @@
     </div>
   </section>
 
+  <!-- MAPA -->
+  <section id="mapa">
+    <div class="map-header reveal">
+      <p class="section-eyebrow" data-i18n="map_eyebrow">Encuéntranos</p>
+      <h2 class="section-title"  data-i18n="map_title">Nuestra Oficina</h2>
+      <div class="section-rule"></div>
+    </div>
+    <!--
+      INSTRUCCIONES PARA PONER TU MAPA REAL:
+      1. Ve a https://maps.google.com
+      2. Busca "Carrer del Grau 7, Lloret de Mar"
+      3. Clic en Compartir → Insertar un mapa → Copiar HTML
+      4. Reemplaza el iframe de abajo con el tuyo
+    -->
+    <iframe
+      class="map-embed"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2977.123456789!2d2.8391!3d41.6986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12bb10b1a1a1a1a1%3A0x1a1a1a1a1a1a1a1a!2sCarrer%20del%20Grau%207%2C%20Lloret%20de%20Mar!5e0!3m2!1ses!2ses!4v1234567890"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      title="Oficina Summer Dreams">
+    </iframe>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <p data-i18n="footer">© 2026 Summer Dreams. Todos los derechos reservados.</p>
   </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox-overlay" id="lightbox">
+    <div class="lightbox-header">
+      <span class="lightbox-title" id="lb-title"></span>
+      <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    </div>
+    <div class="lightbox-main">
+      <img id="lb-img" src="" alt="" />
+      <button class="lightbox-nav lightbox-prev" onclick="lbNav(-1)">‹</button>
+      <button class="lightbox-nav lightbox-next" onclick="lbNav(1)">›</button>
+    </div>
+    <div class="lightbox-thumbs" id="lb-thumbs"></div>
+    <p class="lightbox-counter" id="lb-counter"></p>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
@@ -302,184 +399,97 @@
   ══════════════════════════════════════════════ */
   const translations = {
     es: {
-      nav_inicio:      'Inicio',
-      nav_apart:       'Apartamentos',
-      nav_about:       'Sobre Nosotros',
-      nav_serv:        'Servicios',
-      nav_contact:     'Contacto',
-      hero_cta:        'Ver Apartamentos',
-      apt_eyebrow:     'Descubre',
-      apt_title:       'Nuestros Apartamentos',
-      about_eyebrow:   'Quiénes Somos',
-      about_title:     'Sobre Summer Dreams',
-      about_text:      'Durante más de 15 años, Summer Dreams ha reunido una colección exclusiva de apartamentos vacacionales de lujo en los destinos más deseados del mundo. Creemos que cada viajero merece una experiencia extraordinaria, desde el momento de la reserva hasta la despedida. Nuestro compromiso con la calidad, el profesionalismo y el servicio personalizado nos distingue.',
-      stat_0:          'Años de Excelencia',
-      stat_1:          'Huéspedes Felices',
-      stat_2:          'Propiedades Verificadas',
-      stat_3:          'Tasa de Satisfacción',
-      serv_eyebrow:    'Lo Que Ofrecemos',
-      serv_title:      'Nuestros Servicios',
-      svc_0_title:     'WiFi de Alta Velocidad',
-      svc_0_desc:      'Mantente conectado con internet de fibra óptica gratuito.',
-      svc_1_title:     'Limpieza Diaria',
-      svc_1_desc:      'Servicio profesional de limpieza para mantener tu espacio impecable.',
-      svc_2_title:     'Piscina',
-      svc_2_desc:      'Disfruta de nuestras piscinas climatizadas con vistas panorámicas.',
-      svc_3_title:     'Aparcamiento Privado',
-      svc_3_desc:      'Parking subterráneo seguro para todos los huéspedes.',
-      svc_4_title:     'Aire Acondicionado',
-      svc_4_desc:      'Control climático para mayor confort durante todo el año.',
-      svc_5_title:     'Cocina Gourmet',
-      svc_5_desc:      'Cocinas totalmente equipadas con electrodomésticos de primera.',
-      svc_6_title:     'Seguridad 24/7',
-      svc_6_desc:      'Vigilancia permanente para tu tranquilidad.',
-      svc_7_title:     'Conserjería',
-      svc_7_desc:      'Servicio de conserjería personalizado para cualquier petición.',
-      apt_0_name:      'Suite Brisa Oceánica',
-      apt_0_desc:      'Impresionante suite frente al mar con vistas panorámicas y acabados en mármol.',
-      apt_1_name:      'Estudio Costero',
-      apt_1_desc:      'Acogedor estudio en primera línea de playa, perfecto para parejas, con terraza privada.',
-      apt_2_name:      'Ático Skyline',
-      apt_2_desc:      'Ático en azotea con piscina infinita y vistas impresionantes a la ciudad.',
-      apt_3_name:      'Villa Mediterránea',
-      apt_3_desc:      'Villa de lujo rústico con jardín privado y arquitectura de piedra.',
-      apt_4_name:      'Loft Urbano',
-      apt_4_desc:      'Loft de diseño con ladrillo visto, techos altos y mucha luz natural.',
-      apt_5_name:      'Retiro Tropical',
-      apt_5_desc:      'Villa tropical abierta con piscina privada y palmeras alrededor.',
-      apt_book:        'Reservar Ahora',
-      apt_night:       'noche',
-      contact_eyebrow: 'Ponte en Contacto',
-      contact_title:   'Contáctanos',
-      form_name:       'Tu Nombre',
-      form_email:      'Tu Email',
-      form_message:    'Tu Mensaje',
-      form_send:       'Enviar Mensaje',
-      form_ok:         '¡Gracias! Te contactaremos pronto.',
-      form_err:        'Algo salió mal. Por favor, inténtalo de nuevo.',
-      info_phone:      'Teléfono',
-      info_address:    'Dirección',
-      footer:          '© 2026 Summer Dreams. Todos los derechos reservados.',
+      nav_inicio:'Inicio', nav_apart:'Apartamentos', nav_about:'Sobre Nosotros', nav_serv:'Servicios', nav_reviews:'Reseñas', nav_contact:'Contacto',
+      hero_cta:'Ver Apartamentos',
+      apt_eyebrow:'Descubre', apt_title:'Nuestros Apartamentos',
+      about_eyebrow:'Quiénes Somos', about_title:'Sobre Summer Dreams',
+      about_text:'Durante más de 15 años, Summer Dreams ha reunido una colección exclusiva de apartamentos vacacionales de lujo en los destinos más deseados del mundo. Creemos que cada viajero merece una experiencia extraordinaria, desde el momento de la reserva hasta la despedida. Nuestro compromiso con la calidad, el profesionalismo y el servicio personalizado nos distingue.',
+      stat_0:'Años de Excelencia', stat_1:'Huéspedes Felices', stat_2:'Propiedades Verificadas', stat_3:'Tasa de Satisfacción',
+      serv_eyebrow:'Lo Que Ofrecemos', serv_title:'Nuestros Servicios',
+      svc_0_title:'WiFi de Alta Velocidad', svc_0_desc:'Mantente conectado con internet de fibra óptica gratuito.',
+      svc_1_title:'Limpieza Diaria', svc_1_desc:'Servicio profesional de limpieza para mantener tu espacio impecable.',
+      svc_2_title:'Piscina', svc_2_desc:'Disfruta de nuestras piscinas climatizadas con vistas panorámicas.',
+      svc_3_title:'Aparcamiento Privado', svc_3_desc:'Parking subterráneo seguro para todos los huéspedes.',
+      svc_4_title:'Aire Acondicionado', svc_4_desc:'Control climático para mayor confort durante todo el año.',
+      svc_5_title:'Cocina Gourmet', svc_5_desc:'Cocinas totalmente equipadas con electrodomésticos de primera.',
+      svc_6_title:'Seguridad 24/7', svc_6_desc:'Vigilancia permanente para tu tranquilidad.',
+      svc_7_title:'Conserjería', svc_7_desc:'Servicio de conserjería personalizado para cualquier petición.',
+      apt_0_name:'Suite Brisa Oceánica', apt_0_desc:'Impresionante suite frente al mar con vistas panorámicas y acabados en mármol.',
+      apt_1_name:'Estudio Costero', apt_1_desc:'Acogedor estudio en primera línea de playa, perfecto para parejas, con terraza privada.',
+      apt_2_name:'Ático Skyline', apt_2_desc:'Ático en azotea con piscina infinita y vistas impresionantes a la ciudad.',
+      apt_3_name:'Villa Mediterránea', apt_3_desc:'Villa de lujo rústico con jardín privado y arquitectura de piedra.',
+      apt_4_name:'Loft Urbano', apt_4_desc:'Loft de diseño con ladrillo visto, techos altos y mucha luz natural.',
+      apt_5_name:'Retiro Tropical', apt_5_desc:'Villa tropical abierta con piscina privada y palmeras alrededor.',
+      apt_book:'Reservar Ahora', apt_night:'noche',
+      rev_eyebrow:'Lo Que Dicen', rev_title:'Reseñas de Clientes',
+      contact_eyebrow:'Ponte en Contacto', contact_title:'Contáctanos',
+      form_name:'Tu Nombre', form_email:'Tu Email', form_message:'Tu Mensaje', form_send:'Enviar Mensaje',
+      form_ok:'¡Gracias! Te contactaremos pronto.', form_err:'Algo salió mal. Por favor, inténtalo de nuevo.',
+      info_phone:'Teléfono', info_address:'Dirección',
+      map_eyebrow:'Encuéntranos', map_title:'Nuestra Oficina',
+      footer:'© 2026 Summer Dreams. Todos los derechos reservados.',
     },
     ru: {
-      nav_inicio:      'Главная',
-      nav_apart:       'Апартаменты',
-      nav_about:       'О нас',
-      nav_serv:        'Услуги',
-      nav_contact:     'Контакты',
-      hero_cta:        'Смотреть апартаменты',
-      apt_eyebrow:     'Откройте для себя',
-      apt_title:       'Наши апартаменты',
-      about_eyebrow:   'Кто мы',
-      about_title:     'О Summer Dreams',
-      about_text:      'На протяжении более 15 лет Summer Dreams собирает эксклюзивную коллекцию роскошных апартаментов для отдыха в самых желанных уголках мира. Мы убеждены, что каждый путешественник заслуживает исключительного опыта — с момента бронирования и до последнего дня пребывания. Наша преданность качеству, профессионализму и индивидуальному сервису делает нас непохожими на других.',
-      stat_0:          'Лет безупречной работы',
-      stat_1:          'Довольных гостей',
-      stat_2:          'Проверенных объектов',
-      stat_3:          'Уровень удовлетворённости',
-      serv_eyebrow:    'Что мы предлагаем',
-      serv_title:      'Наши услуги',
-      svc_0_title:     'Высокоскоростной WiFi',
-      svc_0_desc:      'Оставайтесь на связи с бесплатным оптоволоконным интернетом.',
-      svc_1_title:     'Ежедневная уборка',
-      svc_1_desc:      'Профессиональная уборка для поддержания порядка.',
-      svc_2_title:     'Бассейн',
-      svc_2_desc:      'Наслаждайтесь подогреваемыми бассейнами с панорамным видом.',
-      svc_3_title:     'Частная парковка',
-      svc_3_desc:      'Охраняемая подземная парковка для всех гостей.',
-      svc_4_title:     'Кондиционер',
-      svc_4_desc:      'Климат-контроль для комфорта в любое время года.',
-      svc_5_title:     'Гурме кухня',
-      svc_5_desc:      'Полностью оборудованные кухни с первоклассной техникой.',
-      svc_6_title:     'Охрана 24/7',
-      svc_6_desc:      'Круглосуточная охрана для вашего спокойствия.',
-      svc_7_title:     'Консьерж',
-      svc_7_desc:      'Персональный консьерж для выполнения любых пожеланий.',
-      apt_0_name:      'Сюит «Океанский бриз»',
-      apt_0_desc:      'Роскошный номер с панорамным видом на море и интерьерами из мрамора.',
-      apt_1_name:      'Прибрежная студия',
-      apt_1_desc:      'Уютная студия на берегу моря для пар, с частным балконом.',
-      apt_2_name:      'Пентхаус Skyline',
-      apt_2_desc:      'Пентхаус на крыше с бассейном-инфинити и захватывающим видом на город.',
-      apt_3_name:      'Средиземноморская вилла',
-      apt_3_desc:      'Вилла в деревенском стиле с частным садом и каменной архитектурой.',
-      apt_4_name:      'Городской лофт',
-      apt_4_desc:      'Дизайнерский лофт с кирпичными стенами, высокими потолками и естественным освещением.',
-      apt_5_name:      'Тропический уголок',
-      apt_5_desc:      'Открытая тропическая вилла с бассейном и пальмами вокруг.',
-      apt_book:        'Забронировать',
-      apt_night:       'ночь',
-      contact_eyebrow: 'Свяжитесь с нами',
-      contact_title:   'Контакты',
-      form_name:       'Ваше имя',
-      form_email:      'Ваш email',
-      form_message:    'Ваше сообщение',
-      form_send:       'Отправить',
-      form_ok:         'Спасибо! Мы свяжемся с вами в ближайшее время.',
-      form_err:        'Что-то пошло не так. Пожалуйста, попробуйте снова.',
-      info_phone:      'Телефон',
-      info_address:    'Адрес',
-      footer:          '© 2026 Summer Dreams. Все права защищены.',
+      nav_inicio:'Главная', nav_apart:'Апартаменты', nav_about:'О нас', nav_serv:'Услуги', nav_reviews:'Отзывы', nav_contact:'Контакты',
+      hero_cta:'Смотреть апартаменты',
+      apt_eyebrow:'Откройте для себя', apt_title:'Наши апартаменты',
+      about_eyebrow:'Кто мы', about_title:'О Summer Dreams',
+      about_text:'На протяжении более 15 лет Summer Dreams собирает эксклюзивную коллекцию роскошных апартаментов для отдыха в самых желанных уголках мира. Мы убеждены, что каждый путешественник заслуживает исключительного опыта — с момента бронирования и до последнего дня пребывания.',
+      stat_0:'Лет безупречной работы', stat_1:'Довольных гостей', stat_2:'Проверенных объектов', stat_3:'Уровень удовлетворённости',
+      serv_eyebrow:'Что мы предлагаем', serv_title:'Наши услуги',
+      svc_0_title:'Высокоскоростной WiFi', svc_0_desc:'Оставайтесь на связи с бесплатным оптоволоконным интернетом.',
+      svc_1_title:'Ежедневная уборка', svc_1_desc:'Профессиональная уборка для поддержания порядка.',
+      svc_2_title:'Бассейн', svc_2_desc:'Наслаждайтесь подогреваемыми бассейнами с панорамным видом.',
+      svc_3_title:'Частная парковка', svc_3_desc:'Охраняемая подземная парковка для всех гостей.',
+      svc_4_title:'Кондиционер', svc_4_desc:'Климат-контроль для комфорта в любое время года.',
+      svc_5_title:'Гурме кухня', svc_5_desc:'Полностью оборудованные кухни с первоклассной техникой.',
+      svc_6_title:'Охрана 24/7', svc_6_desc:'Круглосуточная охрана для вашего спокойствия.',
+      svc_7_title:'Консьерж', svc_7_desc:'Персональный консьерж для выполнения любых пожеланий.',
+      apt_0_name:'Сюит «Океанский бриз»', apt_0_desc:'Роскошный номер с панорамным видом на море и интерьерами из мрамора.',
+      apt_1_name:'Прибрежная студия', apt_1_desc:'Уютная студия на берегу моря для пар, с частным балконом.',
+      apt_2_name:'Пентхаус Skyline', apt_2_desc:'Пентхаус на крыше с бассейном-инфинити и захватывающим видом на город.',
+      apt_3_name:'Средиземноморская вилла', apt_3_desc:'Вилла в деревенском стиле с частным садом и каменной архитектурой.',
+      apt_4_name:'Городской лофт', apt_4_desc:'Дизайнерский лофт с кирпичными стенами и высокими потолками.',
+      apt_5_name:'Тропический уголок', apt_5_desc:'Открытая тропическая вилла с бассейном и пальмами вокруг.',
+      apt_book:'Забронировать', apt_night:'ночь',
+      rev_eyebrow:'Отзывы', rev_title:'Отзывы клиентов',
+      contact_eyebrow:'Свяжитесь с нами', contact_title:'Контакты',
+      form_name:'Ваше имя', form_email:'Ваш email', form_message:'Ваше сообщение', form_send:'Отправить',
+      form_ok:'Спасибо! Мы свяжемся с вами в ближайшее время.', form_err:'Что-то пошло не так. Попробуйте снова.',
+      info_phone:'Телефон', info_address:'Адрес',
+      map_eyebrow:'Найдите нас', map_title:'Наш офис',
+      footer:'© 2026 Summer Dreams. Все права защищены.',
     },
     en: {
-      nav_inicio:      'Home',
-      nav_apart:       'Apartments',
-      nav_about:       'About Us',
-      nav_serv:        'Services',
-      nav_contact:     'Contact',
-      hero_cta:        'View Apartments',
-      apt_eyebrow:     'Discover',
-      apt_title:       'Our Apartments',
-      about_eyebrow:   'Who We Are',
-      about_title:     'About Summer Dreams',
-      about_text:      'For over 15 years, Summer Dreams has curated an exclusive collection of luxury vacation apartments in the world\'s most desirable destinations. We believe every traveler deserves an extraordinary experience — from the moment they book to the moment they leave. Our commitment to quality, professionalism, and personalized service sets us apart.',
-      stat_0:          'Years of Excellence',
-      stat_1:          'Happy Guests',
-      stat_2:          'Verified Properties',
-      stat_3:          'Satisfaction Rate',
-      serv_eyebrow:    'What We Offer',
-      serv_title:      'Our Services',
-      svc_0_title:     'High-Speed WiFi',
-      svc_0_desc:      'Stay connected with complimentary fiber-optic internet.',
-      svc_1_title:     'Daily Cleaning',
-      svc_1_desc:      'Professional housekeeping to keep your space pristine.',
-      svc_2_title:     'Swimming Pool',
-      svc_2_desc:      'Enjoy our heated pools with panoramic views.',
-      svc_3_title:     'Private Parking',
-      svc_3_desc:      'Secure underground parking for all guests.',
-      svc_4_title:     'Air Conditioning',
-      svc_4_desc:      'Climate control for year-round comfort.',
-      svc_5_title:     'Gourmet Kitchen',
-      svc_5_desc:      'Fully equipped kitchens with premium appliances.',
-      svc_6_title:     '24/7 Security',
-      svc_6_desc:      'Round-the-clock security for your peace of mind.',
-      svc_7_title:     'Concierge',
-      svc_7_desc:      'Personal concierge service for any request.',
-      apt_0_name:      'Ocean Breeze Suite',
-      apt_0_desc:      'Stunning oceanfront suite with panoramic sea views and marble interiors.',
-      apt_1_name:      'Coastal Studio',
-      apt_1_desc:      'Cozy beachfront studio perfect for couples, with a private balcony.',
-      apt_2_name:      'Skyline Penthouse',
-      apt_2_desc:      'Rooftop penthouse with infinity pool and breathtaking city views.',
-      apt_3_name:      'Mediterranean Villa',
-      apt_3_desc:      'Rustic luxury villa with private garden and stone architecture.',
-      apt_4_name:      'Urban Loft',
-      apt_4_desc:      'Designer loft with exposed brick, high ceilings, and natural light.',
-      apt_5_name:      'Tropical Retreat',
-      apt_5_desc:      'Open-air tropical villa with plunge pool and palm tree surroundings.',
-      apt_book:        'Book Now',
-      apt_night:       'night',
-      contact_eyebrow: 'Get in Touch',
-      contact_title:   'Contact Us',
-      form_name:       'Your Name',
-      form_email:      'Your Email',
-      form_message:    'Your Message',
-      form_send:       'Send Message',
-      form_ok:         "Thank you! We'll get back to you soon.",
-      form_err:        'Something went wrong. Please try again.',
-      info_phone:      'Phone',
-      info_address:    'Address',
-      footer:          '© 2026 Summer Dreams. All rights reserved.',
+      nav_inicio:'Home', nav_apart:'Apartments', nav_about:'About Us', nav_serv:'Services', nav_reviews:'Reviews', nav_contact:'Contact',
+      hero_cta:'View Apartments',
+      apt_eyebrow:'Discover', apt_title:'Our Apartments',
+      about_eyebrow:'Who We Are', about_title:'About Summer Dreams',
+      about_text:"For over 15 years, Summer Dreams has curated an exclusive collection of luxury vacation apartments in the world's most desirable destinations. We believe every traveler deserves an extraordinary experience — from the moment they book to the moment they leave.",
+      stat_0:'Years of Excellence', stat_1:'Happy Guests', stat_2:'Verified Properties', stat_3:'Satisfaction Rate',
+      serv_eyebrow:'What We Offer', serv_title:'Our Services',
+      svc_0_title:'High-Speed WiFi', svc_0_desc:'Stay connected with complimentary fiber-optic internet.',
+      svc_1_title:'Daily Cleaning', svc_1_desc:'Professional housekeeping to keep your space pristine.',
+      svc_2_title:'Swimming Pool', svc_2_desc:'Enjoy our heated pools with panoramic views.',
+      svc_3_title:'Private Parking', svc_3_desc:'Secure underground parking for all guests.',
+      svc_4_title:'Air Conditioning', svc_4_desc:'Climate control for year-round comfort.',
+      svc_5_title:'Gourmet Kitchen', svc_5_desc:'Fully equipped kitchens with premium appliances.',
+      svc_6_title:'24/7 Security', svc_6_desc:'Round-the-clock security for your peace of mind.',
+      svc_7_title:'Concierge', svc_7_desc:'Personal concierge service for any request.',
+      apt_0_name:'Ocean Breeze Suite', apt_0_desc:'Stunning oceanfront suite with panoramic sea views and marble interiors.',
+      apt_1_name:'Coastal Studio', apt_1_desc:'Cozy beachfront studio perfect for couples, with a private balcony.',
+      apt_2_name:'Skyline Penthouse', apt_2_desc:'Rooftop penthouse with infinity pool and breathtaking city views.',
+      apt_3_name:'Mediterranean Villa', apt_3_desc:'Rustic luxury villa with private garden and stone architecture.',
+      apt_4_name:'Urban Loft', apt_4_desc:'Designer loft with exposed brick, high ceilings, and natural light.',
+      apt_5_name:'Tropical Retreat', apt_5_desc:'Open-air tropical villa with plunge pool and palm tree surroundings.',
+      apt_book:'Book Now', apt_night:'night',
+      rev_eyebrow:'What They Say', rev_title:'Guest Reviews',
+      contact_eyebrow:'Get in Touch', contact_title:'Contact Us',
+      form_name:'Your Name', form_email:'Your Email', form_message:'Your Message', form_send:'Send Message',
+      form_ok:"Thank you! We'll get back to you soon.", form_err:'Something went wrong. Please try again.',
+      info_phone:'Phone', info_address:'Address',
+      map_eyebrow:'Find Us', map_title:'Our Office',
+      footer:'© 2026 Summer Dreams. All rights reserved.',
     }
   };
 
@@ -488,51 +498,73 @@
   function setLang(lang) {
     currentLang = lang;
     const t = translations[lang];
-
-    // Botones activos
-    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelectorAll('.lang-btn').forEach(btn => {
-      if (btn.textContent.includes(lang === 'es' ? 'Español' : lang === 'ru' ? 'Русский' : 'English'))
-        btn.classList.add('active');
+      btn.classList.toggle('active',
+        (lang==='es' && btn.textContent.includes('Español')) ||
+        (lang==='ru' && btn.textContent.includes('Русский')) ||
+        (lang==='en' && btn.textContent.includes('English'))
+      );
     });
-
-    // Textos con data-i18n
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (t[key]) el.textContent = t[key];
-    });
-
-    // Placeholders
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-      const key = el.getAttribute('data-i18n-placeholder');
-      if (t[key]) el.placeholder = t[key];
-    });
-
-    // Apartamentos
+    document.querySelectorAll('[data-i18n]').forEach(el => { const k=el.getAttribute('data-i18n'); if(t[k]) el.textContent=t[k]; });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { const k=el.getAttribute('data-i18n-placeholder'); if(t[k]) el.placeholder=t[k]; });
     rebuildApartments(t);
-
-    // Servicios
     rebuildServices(t);
-
-    // Stats labels
-    document.querySelectorAll('.stat-label').forEach((el, i) => {
-      if (t['stat_' + i]) el.textContent = t['stat_' + i];
-    });
+    rebuildReviews(lang);
+    document.querySelectorAll('.stat-label').forEach((el,i) => { if(t['stat_'+i]) el.textContent=t['stat_'+i]; });
   }
 
-  /* ── DATOS BASE ── */
+  /* ══ DATOS APARTAMENTOS ══ */
   const aptData = [
-    { img: "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&q=75&auto=format&fit=crop", price: 320, location: "Marbella, España" },
-    { img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=75&auto=format&fit=crop", price: 180, location: "Costa del Sol, España" },
-    { img: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=75&auto=format&fit=crop", price: 550, location: "Miami, EE.UU." },
-    { img: "https://images.unsplash.com/photo-1533044309907-0fa3413da946?w=800&q=75&auto=format&fit=crop", price: 420, location: "Ibiza, España" },
-    { img: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=75&auto=format&fit=crop",   price: 250, location: "Barcelona, España" },
-    { img: "https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=800&q=75&auto=format&fit=crop", price: 380, location: "Bali, Indonesia" },
+    { img: "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&q=75&auto=format&fit=crop", price:320, location:"Marbella, España",
+      gallery:[
+        "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=900&q=80&auto=format&fit=crop",
+      ]},
+    { img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=75&auto=format&fit=crop", price:180, location:"Costa del Sol, España",
+      gallery:[
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=900&q=80&auto=format&fit=crop",
+      ]},
+    { img: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=75&auto=format&fit=crop", price:550, location:"Miami, EE.UU.",
+      gallery:[
+        "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=900&q=80&auto=format&fit=crop",
+      ]},
+    { img: "https://images.unsplash.com/photo-1533044309907-0fa3413da946?w=800&q=75&auto=format&fit=crop", price:420, location:"Ibiza, España",
+      gallery:[
+        "https://images.unsplash.com/photo-1533044309907-0fa3413da946?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=900&q=80&auto=format&fit=crop",
+      ]},
+    { img: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=75&auto=format&fit=crop", price:250, location:"Barcelona, España",
+      gallery:[
+        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80&auto=format&fit=crop",
+      ]},
+    { img: "https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=800&q=75&auto=format&fit=crop", price:380, location:"Bali, Indonesia",
+      gallery:[
+        "https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=900&q=80&auto=format&fit=crop",
+      ]},
   ];
 
   const svcIcons = [
     `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>`,
-    `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c4.97 0 9-4.03 9-9"/><path d="M12 3v9l4 2"/><path d="M16 2l2 2-2 2"/><path d="M21 7l-2-2 2-2"/></svg>`,
+    `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c4.97 0 9-4.03 9-9"/><path d="M12 3v9l4 2"/></svg>`,
     `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M2 12h20M2 12c0-5.52 4.48-10 10-10s10 4.48 10 10M2 12c0 5.52 4.48 10 10 10s10-4.48 10-10"/></svg>`,
     `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>`,
     `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9.59 4.59A2 2 0 1111 8H2m10.59 11.41A2 2 0 1013 16H2m15.73-8.27A2.5 2.5 0 1119.5 12H2"/></svg>`,
@@ -543,6 +575,35 @@
 
   const pinIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>`;
 
+  /* ══ RESEÑAS ══ */
+  const reviewsData = {
+    es: [
+      { text:"Una experiencia absolutamente increíble. El apartamento era exactamente como en las fotos, si no mejor. El equipo estuvo disponible en todo momento.", name:"María García", apt:"Suite Brisa Oceánica", avatar:"https://i.pravatar.cc/150?img=47" },
+      { text:"Tercera vez que reservamos con Summer Dreams y nunca nos han decepcionado. La limpieza, la ubicación y la atención al cliente son excepcionales.", name:"Carlos Rodríguez", apt:"Villa Mediterránea", avatar:"https://i.pravatar.cc/150?img=12" },
+      { text:"El loft de Barcelona superó todas nuestras expectativas. Las vistas, el diseño interior y la comodidad lo hacen perfecto para una escapada romántica.", name:"Ana Martínez", apt:"Loft Urbano", avatar:"https://i.pravatar.cc/150?img=32" },
+      { text:"Servicio de conserjería impecable. Nos organizaron excursiones, reservas en restaurantes y hasta una cena privada en la terraza. ¡10 sobre 10!", name:"Pedro López", apt:"Ático Skyline", avatar:"https://i.pravatar.cc/150?img=68" },
+      { text:"El retiro tropical en Bali fue mágico. La piscina privada, el jardín y la tranquilidad del lugar son difíciles de superar. Volveremos sin duda.", name:"Laura Sánchez", apt:"Retiro Tropical", avatar:"https://i.pravatar.cc/150?img=25" },
+      { text:"Muy buenos apartamentos y excelente relación calidad-precio. El proceso de reserva fue sencillo y el check-in muy rápido. Totalmente recomendable.", name:"Javier Fernández", apt:"Estudio Costero", avatar:"https://i.pravatar.cc/150?img=53" },
+    ],
+    ru: [
+      { text:"Абсолютно невероятный опыт. Апартаменты были именно такими, как на фотографиях, если не лучше. Команда была доступна в любое время.", name:"Мария Иванова", apt:"Сюит «Океанский бриз»", avatar:"https://i.pravatar.cc/150?img=47" },
+      { text:"Третий раз бронируем у Summer Dreams — и никогда не разочаровывались. Чистота, расположение и обслуживание на высшем уровне.", name:"Алексей Смирнов", apt:"Средиземноморская вилла", avatar:"https://i.pravatar.cc/150?img=12" },
+      { text:"Лофт в Барселоне превзошёл все ожидания. Виды, дизайн интерьера и уют делают его идеальным для романтического отдыха.", name:"Анна Петрова", apt:"Городской лофт", avatar:"https://i.pravatar.cc/150?img=32" },
+      { text:"Безупречный консьерж-сервис. Нам организовали экскурсии, бронирование ресторанов и даже частный ужин на террасе. 10 из 10!", name:"Дмитрий Козлов", apt:"Пентхаус Skyline", avatar:"https://i.pravatar.cc/150?img=68" },
+      { text:"Тропический уголок на Бали был волшебным. Частный бассейн, сад и тишина — это трудно превзойти. Обязательно вернёмся.", name:"Елена Новикова", apt:"Тропический уголок", avatar:"https://i.pravatar.cc/150?img=25" },
+      { text:"Отличные апартаменты и прекрасное соотношение цены и качества. Процесс бронирования простой, заселение очень быстрое. Рекомендую!", name:"Сергей Волков", apt:"Прибрежная студия", avatar:"https://i.pravatar.cc/150?img=53" },
+    ],
+    en: [
+      { text:"An absolutely incredible experience. The apartment was exactly as in the photos, if not better. The team was available at all times.", name:"Emily Johnson", apt:"Ocean Breeze Suite", avatar:"https://i.pravatar.cc/150?img=47" },
+      { text:"Third time booking with Summer Dreams and they've never let us down. The cleanliness, location and customer service are all exceptional.", name:"James Williams", apt:"Mediterranean Villa", avatar:"https://i.pravatar.cc/150?img=12" },
+      { text:"The Barcelona loft exceeded all our expectations. The views, interior design and comfort make it perfect for a romantic getaway.", name:"Sophie Brown", apt:"Urban Loft", avatar:"https://i.pravatar.cc/150?img=32" },
+      { text:"Impeccable concierge service. They arranged excursions, restaurant reservations and even a private dinner on the terrace. 10 out of 10!", name:"Michael Davis", apt:"Skyline Penthouse", avatar:"https://i.pravatar.cc/150?img=68" },
+      { text:"The tropical retreat in Bali was magical. The private pool, garden and tranquility of the place are hard to beat. We'll definitely return.", name:"Isabella Wilson", apt:"Tropical Retreat", avatar:"https://i.pravatar.cc/150?img=25" },
+      { text:"Great apartments and excellent value for money. The booking process was simple and check-in very quick. Highly recommended.", name:"Oliver Taylor", apt:"Coastal Studio", avatar:"https://i.pravatar.cc/150?img=53" },
+    ],
+  };
+
+  /* ══ RENDER FUNCTIONS ══ */
   function rebuildApartments(t) {
     const grid = document.getElementById('apt-grid');
     grid.innerHTML = '';
@@ -558,7 +619,7 @@
           <h3 class="apt-name font-display">${t['apt_'+i+'_name']}</h3>
           <p class="apt-loc">${pinIcon} ${apt.location}</p>
           <p class="apt-desc">${t['apt_'+i+'_desc']}</p>
-          <button class="apt-btn gold-btn">${t.apt_book}</button>
+          <button class="apt-btn gold-btn" onclick="openLightbox(${i})">${t.apt_book}</button>
         </div>`;
       grid.appendChild(card);
     });
@@ -567,7 +628,7 @@
   function rebuildServices(t) {
     const grid = document.getElementById('services-grid');
     grid.innerHTML = '';
-    for (let i = 0; i < 8; i++) {
+    for (let i=0;i<8;i++) {
       const el = document.createElement('div');
       el.className = 'svc-card reveal visible';
       el.innerHTML = `<div class="svc-icon">${svcIcons[i]}</div><h3 class="svc-title font-display">${t['svc_'+i+'_title']}</h3><p class="svc-desc">${t['svc_'+i+'_desc']}</p>`;
@@ -575,26 +636,87 @@
     }
   }
 
-  /* ── STATS (iconos fijos, labels dinámicos) ── */
+  function rebuildReviews(lang) {
+    const grid = document.getElementById('reviews-grid');
+    grid.innerHTML = '';
+    reviewsData[lang].forEach(r => {
+      const el = document.createElement('div');
+      el.className = 'review-card reveal visible';
+      el.innerHTML = `
+        <div class="review-stars">${'<span>★</span>'.repeat(5)}</div>
+        <p class="review-text">"${r.text}"</p>
+        <div class="review-author">
+          <img src="${r.avatar}" alt="${r.name}" class="review-avatar" />
+          <div>
+            <p class="review-name">${r.name}</p>
+            <p class="review-apt">${r.apt}</p>
+          </div>
+        </div>`;
+      grid.appendChild(el);
+    });
+  }
+
+  /* ══ STATS ══ */
   const statsData = [
-    { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>`, val: "15+" },
-    { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>`, val: "10,000+" },
-    { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`, val: "100%" },
-    { icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`, val: "98%" },
+    { icon:`<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>`, val:"15+" },
+    { icon:`<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>`, val:"10,000+" },
+    { icon:`<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`, val:"100%" },
+    { icon:`<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`, val:"98%" },
   ];
   const statsGrid = document.getElementById('stats-grid');
-  statsData.forEach((s, i) => {
+  statsData.forEach((s,i) => {
     const el = document.createElement('div');
     el.className = 'stat-item reveal';
     el.innerHTML = `<div class="stat-icon-wrap">${s.icon}</div><p class="stat-val">${s.val}</p><p class="stat-label">${translations.es['stat_'+i]}</p>`;
     statsGrid.appendChild(el);
   });
 
-  /* Render inicial en español */
+  /* Render inicial */
   rebuildApartments(translations.es);
   rebuildServices(translations.es);
+  rebuildReviews('es');
 
-  /* ── MOBILE MENU ── */
+  /* ══ LIGHTBOX ══ */
+  let lbPhotos = [], lbIndex = 0;
+
+  function openLightbox(aptIndex) {
+    const t = translations[currentLang];
+    lbPhotos = aptData[aptIndex].gallery;
+    lbIndex = 0;
+    document.getElementById('lb-title').textContent = t['apt_'+aptIndex+'_name'];
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    renderLightbox();
+  }
+
+  function renderLightbox() {
+    document.getElementById('lb-img').src = lbPhotos[lbIndex];
+    document.getElementById('lb-counter').textContent = (lbIndex+1) + ' / ' + lbPhotos.length;
+    const thumbs = document.getElementById('lb-thumbs');
+    thumbs.innerHTML = '';
+    lbPhotos.forEach((src,i) => {
+      const img = document.createElement('img');
+      img.src = src; img.className = 'lightbox-thumb' + (i===lbIndex?' active':'');
+      img.onclick = () => { lbIndex=i; renderLightbox(); };
+      thumbs.appendChild(img);
+    });
+  }
+
+  function lbNav(dir) {
+    lbIndex = (lbIndex + dir + lbPhotos.length) % lbPhotos.length;
+    renderLightbox();
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Cerrar con Escape o clic fuera
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); if(e.key==='ArrowRight') lbNav(1); if(e.key==='ArrowLeft') lbNav(-1); });
+  document.getElementById('lightbox').addEventListener('click', e => { if(e.target===e.currentTarget) closeLightbox(); });
+
+  /* ══ MOBILE MENU ══ */
   const burger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobile-menu');
   const burgerIcon = document.getElementById('burger-icon');
@@ -606,33 +728,21 @@
     burgerIcon.style.display = menuOpen ? 'none'  : 'block';
     closeIcon.style.display  = menuOpen ? 'block' : 'none';
   });
-  function closeMobile() {
-    menuOpen = false;
-    mobileMenu.classList.remove('open');
-    burgerIcon.style.display = 'block';
-    closeIcon.style.display  = 'none';
-  }
+  function closeMobile() { menuOpen=false; mobileMenu.classList.remove('open'); burgerIcon.style.display='block'; closeIcon.style.display='none'; }
 
-  /* ── EMAILJS ── */
+  /* ══ EMAILJS ══ */
   emailjs.init('qUbn33qGSpLpQ9ri1');
   document.getElementById('contact-form').addEventListener('submit', e => {
     e.preventDefault();
-    const form = e.target;
-    const t = translations[currentLang];
-    emailjs.send('service_4lmjq09', 'template_qxmqftp', {
-      from_name:  form.name.value,
-      from_email: form.email.value,
-      message:    form.message.value,
-    })
-    .then(() => { alert(t.form_ok); form.reset(); })
-    .catch(() => { alert(t.form_err); });
+    const form = e.target, t = translations[currentLang];
+    emailjs.send('service_4lmjq09','template_qxmqftp',{ from_name:form.name.value, from_email:form.email.value, message:form.message.value })
+    .then(()=>{ alert(t.form_ok); form.reset(); })
+    .catch(()=>{ alert(t.form_err); });
   });
 
-  /* ── SCROLL REVEAL ── */
+  /* ══ SCROLL REVEAL ══ */
   const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
-    });
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
   }, { threshold: 0.12 });
   const observeReveal = () => document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObserver.observe(el));
   observeReveal();
