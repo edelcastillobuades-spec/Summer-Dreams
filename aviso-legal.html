@@ -8,49 +8,152 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--gold:hsl(43,74%,49%);--dark:hsl(0,0%,8%);--muted:hsl(0,0%,40%);--gold-grad:linear-gradient(135deg,hsl(43,80%,38%),hsl(43,74%,49%),hsl(43,60%,65%));--font-display:'Playfair Display',serif;--font-body:'Montserrat',sans-serif;}
-    html{scroll-behavior:smooth}
-    body{font-family:var(--font-body);background:#fff;color:var(--dark);line-height:1.8}
-    nav{background:rgba(20,20,20,.97);padding:.9rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(184,140,50,.2)}
-    .nav-logo{font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:hsl(43,74%,49%);text-decoration:none}
-    .nav-back{font-family:var(--font-body);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s}
-    .nav-back:hover{color:hsl(43,74%,49%)}
-    .hero{background:var(--dark);padding:4rem 1.5rem;text-align:center}
-    .hero h1{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);color:#fff;margin-bottom:.5rem}
-    .hero-rule{width:60px;height:2px;background:var(--gold-grad);margin:.8rem auto 0}
-    main{max-width:860px;margin:0 auto;padding:4rem 1.5rem}
-    h2{font-family:var(--font-display);font-size:1.4rem;font-weight:700;margin:2.5rem 0 .8rem;color:var(--dark);padding-bottom:.4rem;border-bottom:1px solid hsl(40,20%,90%)}
-    h2:first-child{margin-top:0}
-    p{margin-bottom:1rem;font-size:.9rem;color:#333}
-    ul{margin:.5rem 0 1rem 1.2rem}
-    ul li{font-size:.9rem;color:#333;margin-bottom:.4rem}
-    strong{font-weight:600;color:var(--dark)}
-    .highlight-box{background:hsl(43,60%,97%);border-left:3px solid hsl(43,74%,49%);padding:1rem 1.25rem;margin:1.5rem 0;border-radius:0 4px 4px 0}
-    .highlight-box p{margin:0;font-size:.88rem}
-    footer{background:var(--dark);border-top:1px solid rgba(184,140,50,.15);padding:2rem 1.5rem;text-align:center}
-    footer p{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3)}
-    footer a{color:hsl(43,74%,49%);text-decoration:none;margin:0 .5rem}
-    footer a:hover{text-decoration:underline}
-    @media(max-width:600px){main{padding:2rem 1rem}}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:      #ffffff;
+      --cream:      hsl(42, 35%, 97%);
+      --cream-mid:  hsl(40, 30%, 93%);
+      --beige:      hsl(38, 35%, 86%);
+      --sand:       hsl(36, 32%, 78%);
+      --gold:       hsl(40, 65%, 46%);
+      --gold-light: hsl(42, 55%, 60%);
+      --gold-dark:  hsl(37, 72%, 36%);
+      --text-dark:  hsl(30, 15%, 22%);
+      --text-mid:   hsl(30, 10%, 42%);
+      --font-display: 'Playfair Display', serif;
+      --font-body:    'Montserrat', sans-serif;
+      --gold-grad:    linear-gradient(135deg, hsl(37,72%,36%), hsl(40,65%,46%), hsl(42,55%,60%));
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--cream); color: var(--text-dark); line-height: 1.8; }
+
+    /* Navbar */
+    nav {
+      background: rgba(232, 218, 196, .97);
+      padding: .9rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 50;
+      border-bottom: 1px solid hsl(38, 35%, 78%);
+    }
+    .nav-logo {
+      font-family: var(--font-display); font-size: 1.4rem; font-weight: 700;
+      color: var(--gold-dark); text-decoration: none; transition: color .2s;
+    }
+    .nav-logo:hover { color: var(--gold); }
+    .nav-back {
+      font-family: var(--font-body); font-size: .72rem;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--text-mid); text-decoration: none; transition: color .2s;
+    }
+    .nav-back:hover { color: var(--gold-dark); }
+
+    /* Hero de cabecera */
+    .hero {
+      background: var(--beige);
+      padding: 4rem 1.5rem; text-align: center;
+      border-bottom: 1px solid hsl(38, 30%, 80%);
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--text-dark); margin-bottom: .5rem;
+    }
+    .hero-rule { width: 60px; height: 2px; background: var(--gold-grad); margin: .8rem auto 0; }
+
+    /* Contenido principal */
+    main { max-width: 860px; margin: 0 auto; padding: 4rem 1.5rem; }
+
+    h2 {
+      font-family: var(--font-display); font-size: 1.4rem; font-weight: 700;
+      margin: 2.5rem 0 .8rem; color: var(--text-dark);
+      padding-bottom: .4rem; border-bottom: 1px solid var(--beige);
+    }
+    h2:first-child { margin-top: 0; }
+
+    h3 {
+      font-family: var(--font-display); font-size: 1.05rem; font-weight: 600;
+      margin: 1.5rem 0 .5rem; color: var(--text-dark);
+    }
+
+    p  { margin-bottom: 1rem; font-size: .9rem; color: var(--text-mid); }
+    ul { margin: .5rem 0 1rem 1.2rem; }
+    ul li { font-size: .9rem; color: var(--text-mid); margin-bottom: .4rem; }
+    strong { font-weight: 600; color: var(--text-dark); }
+    a { color: var(--gold-dark); }
+    a:hover { color: var(--gold); }
+
+    /* Caja destacada */
+    .highlight-box {
+      background: hsl(42, 40%, 93%);
+      border-left: 3px solid var(--gold);
+      padding: 1rem 1.25rem; margin: 1.5rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .highlight-box p { margin: 0; font-size: .88rem; }
+
+    /* Tabla */
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .85rem; }
+    thead { background: var(--sand); }
+    th { padding: .7rem 1rem; text-align: left; font-weight: 600; font-size: .78rem; letter-spacing: .08em; color: var(--text-dark); }
+    td { padding: .65rem 1rem; border-bottom: 1px solid var(--cream-mid); vertical-align: top; color: var(--text-mid); }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) { background: var(--cream); }
+
+    /* Grid de derechos */
+    .rights-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; margin: 1rem 0; }
+    .right-item { background: var(--white); border-radius: 4px; padding: 1rem; border-top: 3px solid var(--gold); border: 1px solid var(--beige); border-top: 3px solid var(--gold); }
+    .right-item h4 { font-family: var(--font-display); font-size: .95rem; font-weight: 700; margin-bottom: .4rem; color: var(--text-dark); }
+    .right-item p  { font-size: .82rem; margin: 0; color: var(--text-mid); }
+
+    /* Badges de tipo de cookie */
+    .cookie-type { display: inline-block; padding: .2rem .7rem; border-radius: 2px; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .ct-necesaria { background: hsl(120, 35%, 88%); color: hsl(120, 45%, 28%); }
+    .ct-analitica  { background: hsl(210, 50%, 88%); color: hsl(210, 55%, 32%); }
+
+    /* Botón de preferencias */
+    .btn-pref {
+      display: inline-block; margin-top: 1rem;
+      padding: .75rem 2rem;
+      background: var(--gold-grad); color: var(--white);
+      font-family: var(--font-body); font-size: .75rem; font-weight: 700;
+      letter-spacing: .15em; text-transform: uppercase;
+      border: none; border-radius: 2px; cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-pref:hover { transform: scale(1.03); box-shadow: 0 6px 24px rgba(160,120,40,.25); }
+
+    /* Footer */
+    footer {
+      background: var(--sand);
+      border-top: 1px solid var(--beige);
+      padding: 2rem 1.5rem; text-align: center;
+    }
+    footer p { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-mid); }
+    footer a { color: var(--gold-dark); text-decoration: none; margin: 0 .5rem; }
+    footer a:hover { color: var(--gold); text-decoration: underline; }
+
+    @media (max-width: 600px) { main { padding: 2rem 1rem; } .rights-grid { grid-template-columns: 1fr; } table { font-size: .78rem; } th, td { padding: .5rem .7rem; } }
   </style>
 </head>
 <body>
+
 <nav>
   <a href="index.html" class="nav-logo">Summer Dreams</a>
   <a href="index.html" class="nav-back">← Volver al inicio</a>
 </nav>
- 
+
 <div class="hero">
   <h1>Aviso Legal</h1>
   <div class="hero-rule"></div>
 </div>
- 
+
 <main>
   <div class="highlight-box">
     <p>Última actualización: abril de 2026. En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se facilita la siguiente información general del sitio web.</p>
   </div>
- 
+
   <h2>1. Datos identificativos del titular</h2>
   <p><strong>Denominación social:</strong> [NOMBRE LEGAL DE LA EMPRESA O AUTÓNOMO]</p>
   <p><strong>NIF/CIF:</strong> [NIF O CIF]</p>
@@ -59,15 +162,15 @@
   <p><strong>Correo electrónico:</strong> Lesya@summer-dreams.es</p>
   <p><strong>Sitio web:</strong> www.summer-dreams.es</p>
   <p><strong>Actividad:</strong> Intermediación y gestión de alquiler vacacional y venta de inmuebles.</p>
- 
+
   <h2>2. Objeto y ámbito de aplicación</h2>
   <p>El presente Aviso Legal regula el acceso y uso del sitio web de Summer Dreams (en adelante, "el Sitio Web"). El acceso al Sitio Web implica la aceptación plena y sin reservas de las presentes condiciones.</p>
   <p>Summer Dreams se reserva el derecho a modificar en cualquier momento las condiciones de acceso y uso del Sitio Web, así como los contenidos del mismo.</p>
- 
+
   <h2>3. Propiedad intelectual e industrial</h2>
   <p>Todos los contenidos del Sitio Web, incluyendo textos, fotografías, gráficos, imágenes, logotipos, iconos, código fuente y diseño, son propiedad de Summer Dreams o de terceros que han autorizado su uso, y están protegidos por la legislación española e internacional sobre propiedad intelectual e industrial.</p>
   <p>Queda expresamente prohibida la reproducción, distribución, comunicación pública y transformación total o parcial de los contenidos del Sitio Web sin la autorización expresa y por escrito de Summer Dreams.</p>
- 
+
   <h2>4. Exclusión de responsabilidad</h2>
   <p>Summer Dreams no se hace responsable de los daños o perjuicios derivados de:</p>
   <ul>
@@ -76,18 +179,18 @@
     <li>La falta de disponibilidad o continuidad del Sitio Web.</li>
     <li>Contenidos de terceros accesibles desde el Sitio Web mediante enlaces.</li>
   </ul>
- 
+
   <h2>5. Política de enlaces</h2>
   <p>El Sitio Web puede contener enlaces a sitios web de terceros. Summer Dreams no controla dichos sitios y no asume responsabilidad alguna sobre sus contenidos o políticas de privacidad.</p>
   <p>La inclusión de un enlace externo no implica ningún tipo de relación, recomendación o supervisión por parte de Summer Dreams.</p>
- 
+
   <h2>6. Legislación aplicable y jurisdicción</h2>
   <p>Las presentes condiciones se rigen por la legislación española. Para la resolución de cualquier controversia derivada del acceso o uso del Sitio Web, las partes se someten a los Juzgados y Tribunales de Girona, con renuncia expresa a cualquier otro fuero que pudiera corresponderles.</p>
- 
+
   <h2>7. Contacto</h2>
   <p>Para cualquier consulta relativa al presente Aviso Legal, puede ponerse en contacto con nosotros en: <strong>Lesya@summer-dreams.es</strong></p>
 </main>
- 
+
 <footer>
   <p>
     © 2026 Summer Dreams. Todos los derechos reservados. &nbsp;|&nbsp;
@@ -96,6 +199,6 @@
     <a href="cookies.html">Cookies</a>
   </p>
 </footer>
+
 </body>
 </html>
- 
