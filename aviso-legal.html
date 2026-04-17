@@ -4,201 +4,576 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Aviso Legal — Summer Dreams</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=Cormorant+Garamond:ital,wght@0,300;0,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ═══════════════════════════════════════════════════════════
+   ESTILOS COMPARTIDOS — Páginas Legales Summer Dreams
+   Coherente con index.html: misma paleta, fuentes y cursor
+═══════════════════════════════════════════════════════════ */
 
-    :root {
-      --white:      #ffffff;
-      --cream:      hsl(42, 35%, 97%);
-      --cream-mid:  hsl(40, 30%, 93%);
-      --beige:      hsl(38, 35%, 86%);
-      --sand:       hsl(36, 32%, 78%);
-      --gold:       hsl(40, 65%, 46%);
-      --gold-light: hsl(42, 55%, 60%);
-      --gold-dark:  hsl(37, 72%, 36%);
-      --text-dark:  hsl(30, 15%, 22%);
-      --text-mid:   hsl(30, 10%, 42%);
-      --font-display: 'Playfair Display', serif;
-      --font-body:    'Montserrat', sans-serif;
-      --gold-grad:    linear-gradient(135deg, hsl(37,72%,36%), hsl(40,65%,46%), hsl(42,55%,60%));
-    }
+/* Reset & variables */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--font-body); background: var(--cream); color: var(--text-dark); line-height: 1.8; }
+:root {
+  --white:       #ffffff;
+  --cream:       hsl(42, 35%, 97%);
+  --cream-mid:   hsl(40, 30%, 93%);
+  --beige:       hsl(38, 35%, 86%);
+  --sand:        hsl(36, 32%, 78%);
+  --sand-deep:   hsl(34, 28%, 68%);
+  --gold:        hsl(40, 65%, 46%);
+  --gold-light:  hsl(42, 55%, 60%);
+  --gold-dark:   hsl(37, 72%, 36%);
+  --text-dark:   hsl(30, 15%, 22%);
+  --text-mid:    hsl(30, 10%, 42%);
+  --font-d:      'Playfair Display', serif;
+  --font-a:      'Cormorant Garamond', serif;
+  --font-b:      'Jost', sans-serif;
+  --gg:          linear-gradient(135deg, hsl(37,72%,36%), hsl(40,65%,46%), hsl(42,55%,60%));
+  --ease:        cubic-bezier(.16, 1, .3, 1);
+}
 
-    /* Navbar */
-    nav {
-      background: rgba(232, 218, 196, .97);
-      padding: .9rem 1.5rem;
-      display: flex; align-items: center; justify-content: space-between;
-      position: sticky; top: 0; z-index: 50;
-      border-bottom: 1px solid hsl(38, 35%, 78%);
-    }
-    .nav-logo {
-      font-family: var(--font-display); font-size: 1.4rem; font-weight: 700;
-      color: var(--gold-dark); text-decoration: none; transition: color .2s;
-    }
-    .nav-logo:hover { color: var(--gold); }
-    .nav-back {
-      font-family: var(--font-body); font-size: .72rem;
-      letter-spacing: .12em; text-transform: uppercase;
-      color: var(--text-mid); text-decoration: none; transition: color .2s;
-    }
-    .nav-back:hover { color: var(--gold-dark); }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
 
-    /* Hero de cabecera */
-    .hero {
-      background: var(--beige);
-      padding: 4rem 1.5rem; text-align: center;
-      border-bottom: 1px solid hsl(38, 30%, 80%);
-    }
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--text-dark); margin-bottom: .5rem;
-    }
-    .hero-rule { width: 60px; height: 2px; background: var(--gold-grad); margin: .8rem auto 0; }
+body {
+  font-family: var(--font-b);
+  background: var(--cream);
+  color: var(--text-dark);
+  line-height: 1.8;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
 
-    /* Contenido principal */
-    main { max-width: 860px; margin: 0 auto; padding: 4rem 1.5rem; }
+/* Grain overlay — igual que el index */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: .025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
-    h2 {
-      font-family: var(--font-display); font-size: 1.4rem; font-weight: 700;
-      margin: 2.5rem 0 .8rem; color: var(--text-dark);
-      padding-bottom: .4rem; border-bottom: 1px solid var(--beige);
-    }
-    h2:first-child { margin-top: 0; }
+/* ── CURSOR PERSONALIZADO (igual que el index) ── */
+* { cursor: none !important; }
 
-    h3 {
-      font-family: var(--font-display); font-size: 1.05rem; font-weight: 600;
-      margin: 1.5rem 0 .5rem; color: var(--text-dark);
-    }
+#cur {
+  position: fixed;
+  z-index: 99999;
+  pointer-events: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  transform: translate(-50%, -50%);
+  transition: width .15s var(--ease), height .15s var(--ease);
+  mix-blend-mode: multiply;
+}
+#cur-ring {
+  position: fixed;
+  z-index: 99998;
+  pointer-events: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-light);
+  transform: translate(-50%, -50%);
+  transition: all .35s var(--ease);
+  opacity: .5;
+}
+#cur-trail {
+  position: fixed;
+  z-index: 99997;
+  pointer-events: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(180,140,60,.12), transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: all .6s var(--ease);
+}
 
-    p  { margin-bottom: 1rem; font-size: .9rem; color: var(--text-mid); }
-    ul { margin: .5rem 0 1rem 1.2rem; }
-    ul li { font-size: .9rem; color: var(--text-mid); margin-bottom: .4rem; }
-    strong { font-weight: 600; color: var(--text-dark); }
-    a { color: var(--gold-dark); }
-    a:hover { color: var(--gold); }
+/* ── NAVBAR ── */
+nav {
+  background: rgba(238, 228, 212, .97);
+  padding: .85rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid hsl(38, 35%, 78%);
+  backdrop-filter: blur(16px);
+}
 
-    /* Caja destacada */
-    .highlight-box {
-      background: hsl(42, 40%, 93%);
-      border-left: 3px solid var(--gold);
-      padding: 1rem 1.25rem; margin: 1.5rem 0;
-      border-radius: 0 4px 4px 0;
-    }
-    .highlight-box p { margin: 0; font-size: .88rem; }
+.nav-logo {
+  font-family: var(--font-d);
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--gold-dark);
+  text-decoration: none;
+  transition: color .3s;
+}
+.nav-logo:hover { color: var(--gold); }
 
-    /* Tabla */
-    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .85rem; }
-    thead { background: var(--sand); }
-    th { padding: .7rem 1rem; text-align: left; font-weight: 600; font-size: .78rem; letter-spacing: .08em; color: var(--text-dark); }
-    td { padding: .65rem 1rem; border-bottom: 1px solid var(--cream-mid); vertical-align: top; color: var(--text-mid); }
-    tr:last-child td { border-bottom: none; }
-    tr:nth-child(even) { background: var(--cream); }
+.nav-back {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-family: var(--font-b);
+  font-size: .62rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--text-mid);
+  text-decoration: none;
+  transition: color .3s;
+}
+.nav-back:hover { color: var(--gold-dark); }
+.nav-back svg { transition: transform .3s; }
+.nav-back:hover svg { transform: translateX(-3px); }
 
-    /* Grid de derechos */
-    .rights-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; margin: 1rem 0; }
-    .right-item { background: var(--white); border-radius: 4px; padding: 1rem; border-top: 3px solid var(--gold); border: 1px solid var(--beige); border-top: 3px solid var(--gold); }
-    .right-item h4 { font-family: var(--font-display); font-size: .95rem; font-weight: 700; margin-bottom: .4rem; color: var(--text-dark); }
-    .right-item p  { font-size: .82rem; margin: 0; color: var(--text-mid); }
+/* ── HERO CABECERA ── */
+.page-hero {
+  background: var(--beige);
+  padding: 5rem 2.5rem 3.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--sand);
+  position: relative;
+  overflow: hidden;
+}
+/* Línea dorada inferior */
+.page-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gg);
+}
 
-    /* Badges de tipo de cookie */
-    .cookie-type { display: inline-block; padding: .2rem .7rem; border-radius: 2px; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-    .ct-necesaria { background: hsl(120, 35%, 88%); color: hsl(120, 45%, 28%); }
-    .ct-analitica  { background: hsl(210, 50%, 88%); color: hsl(210, 55%, 32%); }
+.page-hero-eyebrow {
+  font-family: var(--font-b);
+  font-size: .6rem;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--gold-dark);
+  margin-bottom: .75rem;
+}
 
-    /* Botón de preferencias */
-    .btn-pref {
-      display: inline-block; margin-top: 1rem;
-      padding: .75rem 2rem;
-      background: var(--gold-grad); color: var(--white);
-      font-family: var(--font-body); font-size: .75rem; font-weight: 700;
-      letter-spacing: .15em; text-transform: uppercase;
-      border: none; border-radius: 2px; cursor: pointer;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .btn-pref:hover { transform: scale(1.03); box-shadow: 0 6px 24px rgba(160,120,40,.25); }
+.page-hero h1 {
+  font-family: var(--font-d);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1;
+  letter-spacing: -1px;
+  margin-bottom: 1rem;
+}
+.page-hero h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold-dark);
+}
 
-    /* Footer */
-    footer {
-      background: var(--sand);
-      border-top: 1px solid var(--beige);
-      padding: 2rem 1.5rem; text-align: center;
-    }
-    footer p { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-mid); }
-    footer a { color: var(--gold-dark); text-decoration: none; margin: 0 .5rem; }
-    footer a:hover { color: var(--gold); text-decoration: underline; }
+.hero-rule {
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: var(--gg);
+  margin: 0 auto;
+}
 
-    @media (max-width: 600px) { main { padding: 2rem 1rem; } .rights-grid { grid-template-columns: 1fr; } table { font-size: .78rem; } th, td { padding: .5rem .7rem; } }
+/* ── CONTENIDO PRINCIPAL ── */
+main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 4rem 2.5rem;
+}
+
+/* Caja de aviso destacada */
+.highlight-box {
+  background: hsl(42, 38%, 94%);
+  border-left: 3px solid var(--gold);
+  padding: 1.1rem 1.4rem;
+  margin: 0 0 2.5rem;
+  border-radius: 0 4px 4px 0;
+}
+.highlight-box p {
+  font-family: var(--font-b);
+  font-size: .82rem;
+  font-weight: 300;
+  color: var(--text-mid);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Encabezados de sección */
+h2 {
+  font-family: var(--font-d);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 2.5rem 0 .75rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--beige);
+}
+h2:first-child { margin-top: 0; }
+
+h3 {
+  font-family: var(--font-d);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 1.5rem 0 .5rem;
+}
+
+p {
+  font-family: var(--font-b);
+  font-size: .88rem;
+  font-weight: 300;
+  color: var(--text-mid);
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+strong {
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+a {
+  color: var(--gold-dark);
+  text-decoration: underline;
+  transition: color .2s;
+}
+a:hover { color: var(--gold); }
+
+ul {
+  margin: .5rem 0 1rem 1.5rem;
+}
+ul li {
+  font-family: var(--font-b);
+  font-size: .88rem;
+  font-weight: 300;
+  color: var(--text-mid);
+  margin-bottom: .4rem;
+  line-height: 1.7;
+}
+
+/* ── TABLA ── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 1.5rem;
+  font-size: .84rem;
+}
+thead {
+  background: var(--sand);
+}
+th {
+  padding: .7rem 1rem;
+  text-align: left;
+  font-family: var(--font-b);
+  font-weight: 600;
+  font-size: .7rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-dark);
+}
+td {
+  padding: .65rem 1rem;
+  border-bottom: 1px solid var(--cream-mid);
+  vertical-align: top;
+  font-family: var(--font-b);
+  font-weight: 300;
+  color: var(--text-mid);
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) { background: var(--cream); }
+
+/* ── BADGES DE COOKIES ── */
+.cookie-type {
+  display: inline-block;
+  padding: .18rem .65rem;
+  border-radius: 20px;
+  font-size: .62rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.ct-necesaria { background: hsl(120, 35%, 88%); color: hsl(120, 45%, 28%); }
+.ct-analitica  { background: hsl(210, 50%, 88%); color: hsl(210, 55%, 32%); }
+
+/* ── GRID DE DERECHOS (privacidad) ── */
+.rights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0 1.5rem;
+}
+.right-item {
+  background: var(--white);
+  border-radius: 4px;
+  padding: 1.1rem;
+  border: 1px solid var(--beige);
+  border-top: 3px solid var(--gold);
+  transition: box-shadow .3s;
+}
+.right-item:hover {
+  box-shadow: 0 8px 24px rgba(120,90,40,.1);
+}
+.right-item h4 {
+  font-family: var(--font-d);
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: .35rem;
+}
+.right-item p {
+  font-size: .8rem;
+  margin: 0;
+  color: var(--text-mid);
+}
+
+/* ── BOTÓN DE PREFERENCIAS ── */
+.btn-prefs {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: .75rem;
+  padding: .8rem 2rem;
+  background: var(--gg);
+  color: var(--white);
+  font-family: var(--font-b);
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: transform .25s var(--ease), box-shadow .25s;
+}
+.btn-prefs:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(120,90,40,.3);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--sand);
+  border-top: 1px solid var(--beige);
+  padding: 2rem 2.5rem;
+  text-align: center;
+}
+footer p {
+  font-family: var(--font-b);
+  font-size: .65rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  font-weight: 300;
+  color: var(--text-mid);
+}
+footer a {
+  color: var(--gold-dark);
+  text-decoration: none;
+  margin: 0 .5rem;
+  transition: color .2s;
+}
+footer a:hover { color: var(--gold); text-decoration: underline; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: .85rem 1.25rem; }
+  .page-hero { padding: 3.5rem 1.25rem 2.5rem; }
+  main { padding: 2.5rem 1.25rem; }
+  footer { padding: 1.75rem 1.25rem; }
+  .rights-grid { grid-template-columns: 1fr; }
+  table { font-size: .78rem; }
+  th, td { padding: .5rem .65rem; }
+}
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">Summer Dreams</a>
-  <a href="index.html" class="nav-back">← Volver al inicio</a>
-</nav>
+  <!-- Cursor personalizado (igual que index.html) -->
+  <div id="cur"></div>
+  <div id="cur-ring"></div>
+  <div id="cur-trail"></div>
 
-<div class="hero">
-  <h1>Aviso Legal</h1>
-  <div class="hero-rule"></div>
-</div>
+  <!-- ── NAVBAR ── -->
+  <nav>
+    <a href="index.html" class="nav-logo">Summer Dreams</a>
+    <a href="index.html" class="nav-back">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <line x1="19" y1="12" x2="5" y2="12"/>
+        <polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Volver al inicio
+    </a>
+  </nav>
 
-<main>
-  <div class="highlight-box">
-    <p>Última actualización: abril de 2026. En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se facilita la siguiente información general del sitio web.</p>
+  <!-- ── HERO ── -->
+  <div class="page-hero">
+    <div class="page-hero-eyebrow">Legal</div>
+    <h1>Aviso <em>Legal</em></h1>
+    <span class="hero-rule"></span>
   </div>
 
-  <h2>1. Datos identificativos del titular</h2>
-  <p><strong>Denominación social:</strong> [NOMBRE LEGAL DE LA EMPRESA O AUTÓNOMO]</p>
-  <p><strong>NIF/CIF:</strong> [NIF O CIF]</p>
-  <p><strong>Domicilio social:</strong> Carrer del Grau 7, oficina 17, 17310 Lloret de Mar, Girona, España</p>
-  <p><strong>Teléfono:</strong> +34 642 406 049</p>
-  <p><strong>Correo electrónico:</strong> Lesya@summer-dreams.es</p>
-  <p><strong>Sitio web:</strong> www.summer-dreams.es</p>
-  <p><strong>Actividad:</strong> Intermediación y gestión de alquiler vacacional y venta de inmuebles.</p>
+  <!-- ── CONTENIDO ── -->
+  <main>
 
-  <h2>2. Objeto y ámbito de aplicación</h2>
-  <p>El presente Aviso Legal regula el acceso y uso del sitio web de Summer Dreams (en adelante, "el Sitio Web"). El acceso al Sitio Web implica la aceptación plena y sin reservas de las presentes condiciones.</p>
-  <p>Summer Dreams se reserva el derecho a modificar en cualquier momento las condiciones de acceso y uso del Sitio Web, así como los contenidos del mismo.</p>
+    <div class="highlight-box">
+      <p>
+        Última actualización: abril de 2026. En cumplimiento de la Ley 34/2002, de 11 de julio,
+        de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE),
+        se facilita la siguiente información general del sitio web.
+      </p>
+    </div>
 
-  <h2>3. Propiedad intelectual e industrial</h2>
-  <p>Todos los contenidos del Sitio Web, incluyendo textos, fotografías, gráficos, imágenes, logotipos, iconos, código fuente y diseño, son propiedad de Summer Dreams o de terceros que han autorizado su uso, y están protegidos por la legislación española e internacional sobre propiedad intelectual e industrial.</p>
-  <p>Queda expresamente prohibida la reproducción, distribución, comunicación pública y transformación total o parcial de los contenidos del Sitio Web sin la autorización expresa y por escrito de Summer Dreams.</p>
+    <h2>1. Datos identificativos del titular</h2>
+    <p><strong>Denominación social:</strong> [NOMBRE LEGAL DE LA EMPRESA O AUTÓNOMO]</p>
+    <p><strong>NIF / CIF:</strong> [NIF O CIF]</p>
+    <p><strong>Domicilio social:</strong> Carrer del Grau 7, oficina 17, 17310 Lloret de Mar, Girona, España</p>
+    <p><strong>Teléfono:</strong> +34 642 406 049</p>
+    <p><strong>Correo electrónico:</strong> Lesya@summer-dreams.es</p>
+    <p><strong>Sitio web:</strong> www.summer-dreams.es</p>
+    <p><strong>Actividad:</strong> Intermediación y gestión de alquiler vacacional y venta de inmuebles.</p>
 
-  <h2>4. Exclusión de responsabilidad</h2>
-  <p>Summer Dreams no se hace responsable de los daños o perjuicios derivados de:</p>
-  <ul>
-    <li>Interrupciones, errores o virus en el Sitio Web no imputables a Summer Dreams.</li>
-    <li>El uso incorrecto del Sitio Web por parte de los usuarios.</li>
-    <li>La falta de disponibilidad o continuidad del Sitio Web.</li>
-    <li>Contenidos de terceros accesibles desde el Sitio Web mediante enlaces.</li>
-  </ul>
+    <h2>2. Objeto y ámbito de aplicación</h2>
+    <p>
+      El presente Aviso Legal regula el acceso y uso del sitio web de Summer Dreams
+      (en adelante, "el Sitio Web"). El acceso al Sitio Web implica la aceptación plena
+      y sin reservas de las presentes condiciones.
+    </p>
+    <p>
+      Summer Dreams se reserva el derecho a modificar en cualquier momento las condiciones
+      de acceso y uso del Sitio Web, así como los contenidos del mismo.
+    </p>
 
-  <h2>5. Política de enlaces</h2>
-  <p>El Sitio Web puede contener enlaces a sitios web de terceros. Summer Dreams no controla dichos sitios y no asume responsabilidad alguna sobre sus contenidos o políticas de privacidad.</p>
-  <p>La inclusión de un enlace externo no implica ningún tipo de relación, recomendación o supervisión por parte de Summer Dreams.</p>
+    <h2>3. Propiedad intelectual e industrial</h2>
+    <p>
+      Todos los contenidos del Sitio Web, incluyendo textos, fotografías, gráficos, imágenes,
+      logotipos, iconos, código fuente y diseño, son propiedad de Summer Dreams o de terceros
+      que han autorizado su uso, y están protegidos por la legislación española e internacional
+      sobre propiedad intelectual e industrial.
+    </p>
+    <p>
+      Queda expresamente prohibida la reproducción, distribución, comunicación pública y
+      transformación total o parcial de los contenidos del Sitio Web sin la autorización
+      expresa y por escrito de Summer Dreams.
+    </p>
 
-  <h2>6. Legislación aplicable y jurisdicción</h2>
-  <p>Las presentes condiciones se rigen por la legislación española. Para la resolución de cualquier controversia derivada del acceso o uso del Sitio Web, las partes se someten a los Juzgados y Tribunales de Girona, con renuncia expresa a cualquier otro fuero que pudiera corresponderles.</p>
+    <h2>4. Exclusión de responsabilidad</h2>
+    <p>Summer Dreams no se hace responsable de los daños o perjuicios derivados de:</p>
+    <ul>
+      <li>Interrupciones, errores o virus en el Sitio Web no imputables a Summer Dreams.</li>
+      <li>El uso incorrecto del Sitio Web por parte de los usuarios.</li>
+      <li>La falta de disponibilidad o continuidad del Sitio Web.</li>
+      <li>Contenidos de terceros accesibles desde el Sitio Web mediante enlaces.</li>
+    </ul>
 
-  <h2>7. Contacto</h2>
-  <p>Para cualquier consulta relativa al presente Aviso Legal, puede ponerse en contacto con nosotros en: <strong>Lesya@summer-dreams.es</strong></p>
-</main>
+    <h2>5. Política de enlaces</h2>
+    <p>
+      El Sitio Web puede contener enlaces a sitios web de terceros. Summer Dreams no controla
+      dichos sitios y no asume responsabilidad alguna sobre sus contenidos o políticas de privacidad.
+    </p>
+    <p>
+      La inclusión de un enlace externo no implica ningún tipo de relación, recomendación
+      o supervisión por parte de Summer Dreams.
+    </p>
 
-<footer>
-  <p>
-    © 2026 Summer Dreams. Todos los derechos reservados. &nbsp;|&nbsp;
-    <a href="aviso-legal.html">Aviso Legal</a>
-    <a href="privacidad.html">Privacidad</a>
-    <a href="cookies.html">Cookies</a>
-  </p>
-</footer>
+    <h2>6. Legislación aplicable y jurisdicción</h2>
+    <p>
+      Las presentes condiciones se rigen por la legislación española. Para la resolución de
+      cualquier controversia derivada del acceso o uso del Sitio Web, las partes se someten
+      a los Juzgados y Tribunales de Girona, con renuncia expresa a cualquier otro fuero
+      que pudiera corresponderles.
+    </p>
+
+    <h2>7. Contacto</h2>
+    <p>
+      Para cualquier consulta relativa al presente Aviso Legal, puede ponerse en contacto
+      con nosotros en: <strong>Lesya@summer-dreams.es</strong>
+    </p>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>
+      © 2026 Summer Dreams. Todos los derechos reservados. &nbsp;|&nbsp;
+      <a href="aviso-legal.html">Aviso Legal</a>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="cookies.html">Cookies</a>
+    </p>
+  </footer>
+
+  <script>
+/* ═══════════════════════════════════════════════════════════
+   CURSOR PERSONALIZADO — igual que el index.html
+═══════════════════════════════════════════════════════════ */
+const cur   = document.getElementById("cur");
+const ring  = document.getElementById("cur-ring");
+const trail = document.getElementById("cur-trail");
+let mx = 0, my = 0;
+let rx = 0, ry = 0;
+let tx = 0, ty = 0;
+
+document.addEventListener("mousemove", e => {
+  mx = e.clientX;
+  my = e.clientY;
+});
+
+function animateCursor() {
+  cur.style.left = mx + "px";
+  cur.style.top  = my + "px";
+  rx += (mx - rx) * .18;
+  ry += (my - ry) * .18;
+  ring.style.left = rx + "px";
+  ring.style.top  = ry + "px";
+  tx += (mx - tx) * .07;
+  ty += (my - ty) * .07;
+  trail.style.left = tx + "px";
+  trail.style.top  = ty + "px";
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+document.querySelectorAll("a, button").forEach(el => {
+  el.addEventListener("mouseenter", () => {
+    cur.style.width   = "16px";
+    cur.style.height  = "16px";
+    ring.style.width  = "48px";
+    ring.style.height = "48px";
+    ring.style.opacity = ".3";
+  });
+  el.addEventListener("mouseleave", () => {
+    cur.style.width   = "8px";
+    cur.style.height  = "8px";
+    ring.style.width  = "32px";
+    ring.style.height = "32px";
+    ring.style.opacity = ".5";
+  });
+});
+  </script>
 
 </body>
 </html>
