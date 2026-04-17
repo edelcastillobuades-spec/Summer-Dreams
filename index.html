@@ -10,7 +10,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
 /* ═══ RESET & ROOT ═══════════════════════════════════════════════════════ */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+*,*::before,*::after {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 :root{
   --white:#ffffff;
   --cream:hsl(42,35%,97%);
@@ -31,7 +35,13 @@
   --ease2:cubic-bezier(.4,0,.2,1);
 }
 html{scroll-behavior:smooth;font-size:16px}
-body{font-family:var(--font-b);background:var(--cream);color:var(--text-dark);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body {
+  font-family:var(--font-b);
+  background:var(--cream);
+  color:var(--text-dark);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
 
 /* Grain overlay */
 body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.03;
@@ -51,15 +61,42 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
   transform:translate(-50%,-50%);transition:all .6s var(--ease)}
 
 /* ═══ UTILITIES ═══════════════════════════════════════════════════════ */
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal {
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity .9s var(--ease),transform .9s var(--ease);
+}
 .reveal.on{opacity:1;transform:none}
-.reveal-l{opacity:0;transform:translateX(-50px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-.reveal-r{opacity:0;transform:translateX(50px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal-l {
+  opacity:0;
+  transform:translateX(-50px);
+  transition:opacity .9s var(--ease),transform .9s var(--ease);
+}
+.reveal-r {
+  opacity:0;
+  transform:translateX(50px);
+  transition:opacity .9s var(--ease),transform .9s var(--ease);
+}
 .reveal-l.on,.reveal-r.on{opacity:1;transform:none}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}.d6{transition-delay:.6s}
+.d1 {
+  transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}.d6{transition-delay:.6s;
+}
 
-.section-label{font-family:var(--font-b);font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;font-weight:500;color:var(--gold)}
-.gold-rule{display:block;width:48px;height:1px;background:var(--gg);margin:.75rem 0}
+.section-label {
+  font-family:var(--font-b);
+  font-size:.6rem;
+  letter-spacing:.35em;
+  text-transform:uppercase;
+  font-weight:500;
+  color:var(--gold);
+}
+.gold-rule {
+  display:block;
+  width:48px;
+  height:1px;
+  background:var(--gg);
+  margin:.75rem 0;
+}
 .gold-rule-c{margin:.75rem auto}
 
 .btn-prim{display:inline-flex;align-items:center;gap:.5rem;
@@ -67,8 +104,17 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
   font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
   padding:.9rem 2.2rem;border:none;border-radius:2px;cursor:pointer;text-decoration:none;
   position:relative;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s}
-.btn-prim::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0);transition:background .3s}
-.btn-prim:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(120,90,40,.35)}
+.btn-prim::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,0);
+  transition:background .3s;
+}
+.btn-prim:hover {
+  transform:translateY(-3px);
+  box-shadow:0 16px 48px rgba(120,90,40,.35);
+}
 .btn-prim:hover::before{background:rgba(255,255,255,.08)}
 
 .btn-ghost{display:inline-flex;align-items:center;gap:.5rem;
@@ -76,7 +122,11 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
   font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
   padding:.85rem 2rem;border:1px solid rgba(255,250,240,.25);border-radius:2px;
   cursor:pointer;text-decoration:none;transition:all .3s}
-.btn-ghost:hover{color:var(--white);border-color:rgba(255,250,240,.7);background:rgba(255,255,255,.06)}
+.btn-ghost:hover {
+  color:var(--white);
+  border-color:rgba(255,250,240,.7);
+  background:rgba(255,255,255,.06);
+}
 
 /* ═══ NAVBAR ══════════════════════════════════════════════════════════ */
 #nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 3rem;
@@ -87,7 +137,12 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
   justify-content:space-between;height:76px;transition:height .4s}
 #nav.s .nav-in{height:60px}
 
-.nav-brand{text-decoration:none;display:flex;flex-direction:column;gap:1px}
+.nav-brand {
+  text-decoration:none;
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+}
 .nav-brand-name{font-family:var(--font-d);font-size:1.45rem;font-weight:600;
   letter-spacing:1.5px;color:rgba(255,250,240,.95);transition:color .4s;line-height:1}
 .nav-brand-sub{font-family:var(--font-b);font-size:.5rem;letter-spacing:.4em;
@@ -111,17 +166,41 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
   text-transform:uppercase;font-weight:500;color:rgba(255,250,240,.8);
   text-decoration:none;border:1px solid rgba(255,250,240,.25);
   padding:.55rem 1.3rem;border-radius:2px;transition:all .3s}
-.nav-contact:hover{background:rgba(255,255,255,.1);border-color:rgba(255,250,240,.6);color:var(--white)}
-#nav.s .nav-contact{color:var(--gold-dark);border-color:var(--gold)}
-#nav.s .nav-contact:hover{background:var(--gold);color:var(--white)}
+.nav-contact:hover {
+  background:rgba(255,255,255,.1);
+  border-color:rgba(255,250,240,.6);
+  color:var(--white);
+}
+#nav.s .nav-contact {
+  color:var(--gold-dark);
+  border-color:var(--gold);
+}
+#nav.s .nav-contact:hover {
+  background:var(--gold);
+  color:var(--white);
+}
 
-.nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px}
+.nav-burger {
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  background:none;
+  border:none;
+  padding:4px;
+}
 .nav-burger span{display:block;width:22px;height:1px;background:rgba(255,250,240,.75);
   transition:all .35s var(--ease)}
 #nav.s .nav-burger span{background:var(--text-dark)}
-.nav-burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
-.nav-burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
-.nav-burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.nav-burger.open span:nth-child(1) {
+  transform:translateY(6px) rotate(45deg);
+}
+.nav-burger.open span:nth-child(2) {
+  opacity:0;
+  transform:scaleX(0);
+}
+.nav-burger.open span:nth-child(3) {
+  transform:translateY(-6px) rotate(-45deg);
+}
 
 .nav-mob{display:none;flex-direction:column;align-items:center;gap:1.75rem;
   padding:2.5rem 1.5rem;background:var(--cream-mid);border-bottom:1px solid var(--beige);
@@ -131,11 +210,19 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
   text-transform:uppercase;color:var(--text-mid);text-decoration:none;transition:color .3s}
 .nav-mob a:hover{color:var(--gold-dark)}
 
-@media(max-width:1024px){.nav-links,.nav-contact{display:none}.nav-burger{display:flex}}
+@media(max-width:1024px) {
+  .nav-links,.nav-contact{display:none}.nav-burger{display:flex};
+}
 @media(max-width:768px){#nav{padding:0 1.25rem}}
 
 /* ═══ HERO ══════════════════════════════════════════════════════════════ */
-#hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden}
+#hero {
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:flex-end;
+  overflow:hidden;
+}
 
 .hero-canvas{position:absolute;inset:0;z-index:1}
 .hero-img-wrap{position:absolute;inset:0;overflow:hidden}
@@ -173,13 +260,24 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
 
 .hero-tag{display:flex;align-items:center;gap:.9rem;margin-bottom:2rem;
   opacity:0;animation:slideUp .8s .3s var(--ease) forwards}
-.hero-tag::before{content:'';display:block;width:36px;height:1px;background:var(--gold-light)}
+.hero-tag::before {
+  content:'';
+  display:block;
+  width:36px;
+  height:1px;
+  background:var(--gold-light);
+}
 .hero-tag span{font-family:var(--font-b);font-size:.58rem;letter-spacing:.4em;
   text-transform:uppercase;color:var(--gold-light);font-weight:400}
 
 /* THE headline — massive split */
 .hero-h{margin-bottom:2.5rem;overflow:hidden}
-.hero-h-row{display:flex;align-items:baseline;gap:1.5rem;overflow:hidden}
+.hero-h-row {
+  display:flex;
+  align-items:baseline;
+  gap:1.5rem;
+  overflow:hidden;
+}
 .hero-h-row+.hero-h-row{margin-top:-.4em}
 
 .hero-word{font-family:var(--font-d);font-size:clamp(4rem,10vw,11rem);
@@ -193,7 +291,9 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
   -webkit-text-fill-color:transparent;background-clip:text;
   -webkit-text-stroke:0}
 @keyframes wordSlide{to{opacity:1;transform:translateY(0)}}
-.wd1{animation-delay:.4s}.wd2{animation-delay:.55s}.wd3{animation-delay:.7s}
+.wd1 {
+  animation-delay:.4s}.wd2{animation-delay:.55s}.wd3{animation-delay:.7s;
+}
 
 .hero-desc{font-family:var(--font-a);font-size:1.1rem;font-style:italic;
   color:rgba(255,250,240,.55);max-width:420px;line-height:1.7;margin-bottom:2.5rem;
@@ -205,7 +305,12 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
 .hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
   z-index:3;display:flex;flex-direction:column;align-items:center;gap:.5rem;
   animation:fadeIn 1s 2.5s ease both;opacity:0}
-.hero-scroll-dot{width:6px;height:6px;border-radius:50%;background:var(--gold-light)}
+.hero-scroll-dot {
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--gold-light);
+}
 .hero-scroll-line{width:1px;height:48px;
   background:linear-gradient(to bottom,var(--gold-light),transparent);
   animation:pulse 2s 3s ease-in-out infinite}
@@ -226,7 +331,9 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
   background:var(--gold-light);transition:transform .3s}
 .lang-btn:hover{color:rgba(255,250,240,.75)}
 .lang-btn.active{color:var(--gold-light)}
-.lang-btn.active::before{transform:translateY(-50%) scaleY(1)}
+.lang-btn.active::before {
+  transform:translateY(-50%) scaleY(1);
+}
 
 /* Hero stats — bottom right */
 .hero-stats{position:absolute;right:3rem;bottom:6rem;z-index:3;
@@ -250,7 +357,11 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
 }
 
 /* ═══ APARTAMENTOS ═════════════════════════════════════════════════════ */
-#apts{background:var(--white);padding:7rem 0;position:relative}
+#apts {
+  background:var(--white);
+  padding:7rem 0;
+  position:relative;
+}
 
 .apts-in{max-width:1440px;margin:0 auto;padding:0 3rem}
 
@@ -259,18 +370,33 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
 .apts-title-block .section-label{margin-bottom:.5rem}
 .apts-title{font-family:var(--font-d);font-size:clamp(2.2rem,4.5vw,4rem);
   font-weight:700;line-height:.9;letter-spacing:-1px;color:var(--text-dark)}
-.apts-title em{font-style:italic;font-weight:400;color:var(--gold-dark)}
+.apts-title em {
+  font-style:italic;
+  font-weight:400;
+  color:var(--gold-dark);
+}
 
 /* Tab bar */
-.apts-tabs{display:flex;border:1px solid var(--beige);border-radius:3px;overflow:hidden}
+.apts-tabs {
+  display:flex;
+  border:1px solid var(--beige);
+  border-radius:3px;
+  overflow:hidden;
+}
 .apts-tab{display:flex;align-items:center;gap:.6rem;
   padding:.8rem 1.8rem;font-family:var(--font-b);font-size:.65rem;
   letter-spacing:.2em;text-transform:uppercase;font-weight:500;
   background:var(--cream);color:var(--text-mid);border:none;cursor:pointer;
   transition:all .3s var(--ease)}
 .apts-tab svg{transition:color .3s}
-.apts-tab.active{background:var(--gold-dark);color:var(--white)}
-.apts-tab:not(.active):hover{background:var(--beige);color:var(--text-dark)}
+.apts-tab.active {
+  background:var(--gold-dark);
+  color:var(--white);
+}
+.apts-tab:not(.active):hover {
+  background:var(--beige);
+  color:var(--text-dark);
+}
 .tab-n{font-size:.58rem;padding:.1rem .4rem;border-radius:20px;
   background:rgba(255,255,255,.2)}
 .apts-tab:not(.active) .tab-n{background:var(--beige)}
@@ -285,8 +411,12 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
   grid-auto-rows:auto;
   gap:1.5rem
 }
-@media(max-width:1200px){.apts-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:680px){.apts-grid{grid-template-columns:1fr}}
+@media(max-width:1200px) {
+  .apts-grid{grid-template-columns:repeat(2,1fr)};
+}
+@media(max-width:680px) {
+  .apts-grid{grid-template-columns:1fr};
+}
 
 /* CARD */
 .apt-card{
@@ -323,7 +453,10 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
   font-family:var(--font-b);font-size:.55rem;letter-spacing:.18em;
   text-transform:uppercase;font-weight:600;padding:.3rem .8rem;border-radius:2px}
 .apt-badge.v{background:var(--gold-dark);color:var(--white)}
-.apt-badge.a{background:rgba(240,225,200,.92);color:var(--gold-dark)}
+.apt-badge.a {
+  background:rgba(240,225,200,.92);
+  color:var(--gold-dark);
+}
 
 .apt-price-tag{position:absolute;bottom:1rem;right:1rem;z-index:3;
   font-family:var(--font-d);font-size:1.2rem;font-weight:700;color:var(--white);
@@ -337,7 +470,12 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
   font-weight:500;margin-bottom:.5rem}
 .apt-name{font-family:var(--font-d);font-size:1.15rem;font-weight:600;
   color:var(--text-dark);line-height:1.15;margin-bottom:.5rem}
-.apt-divider{width:28px;height:1px;background:var(--gg);margin-bottom:.7rem}
+.apt-divider {
+  width:28px;
+  height:1px;
+  background:var(--gg);
+  margin-bottom:.7rem;
+}
 .apt-excerpt{font-family:var(--font-a);font-size:.88rem;font-style:italic;
   color:var(--text-mid);line-height:1.65;margin-bottom:1rem;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -348,15 +486,26 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
   font-family:var(--font-b);font-size:.72rem;color:var(--text-mid);font-weight:300}
 .apt-m svg{color:var(--gold);flex-shrink:0}
 
-.apt-tags{display:flex;flex-wrap:wrap;gap:.35rem;padding-top:.7rem}
+.apt-tags {
+  display:flex;
+  flex-wrap:wrap;
+  gap:.35rem;
+  padding-top:.7rem;
+}
 .apt-tag{font-family:var(--font-b);font-size:.56rem;letter-spacing:.1em;
   text-transform:uppercase;font-weight:500;
   padding:.22rem .65rem;border-radius:2px;
   background:var(--cream);color:var(--text-mid);border:1px solid var(--beige);
   transition:all .2s}
-.apt-tag:hover{background:var(--beige);color:var(--text-dark)}
+.apt-tag:hover {
+  background:var(--beige);
+  color:var(--text-dark);
+}
 
-@media(max-width:768px){.apts-in{padding:0 1.25rem}.apts-hdr{flex-direction:column;align-items:flex-start}}
+@media(max-width:768px) {
+  .apts-in{padding:0 1.25rem}.apts-hdr{flex-direction:column;
+  align-items:flex-start};
+}
 
 /* ═══ MODAL ══════════════════════════════════════════════════════════ */
 #modal{position:fixed;inset:0;z-index:2000;display:none;
@@ -372,8 +521,18 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
 @keyframes mUp{from{opacity:0;transform:translateY(48px)}to{opacity:1;transform:none}}
 
 /* Gallery panel */
-.m-gal{flex:0 0 52%;position:relative;background:hsl(30,15%,10%);overflow:hidden}
-.m-gal-img{width:100%;height:100%;object-fit:cover;transition:opacity .35s var(--ease)}
+.m-gal {
+  flex:0 0 52%;
+  position:relative;
+  background:hsl(30,15%,10%);
+  overflow:hidden;
+}
+.m-gal-img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:opacity .35s var(--ease);
+}
 .m-gal-ov{position:absolute;inset:0;
   background:linear-gradient(to top,rgba(16,10,4,.85) 0%,transparent 45%);
   pointer-events:none}
@@ -383,16 +542,27 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
   background:rgba(240,225,200,.12);border:1px solid rgba(240,225,200,.25);
   color:rgba(255,250,240,.8);display:flex;align-items:center;justify-content:center;
   cursor:pointer;font-size:1.1rem;backdrop-filter:blur(6px);transition:all .3s}
-.m-arrow:hover{background:rgba(180,140,60,.35);border-color:var(--gold-light)}
+.m-arrow:hover {
+  background:rgba(180,140,60,.35);
+  border-color:var(--gold-light);
+}
 .m-counter{position:absolute;top:1.1rem;right:1.1rem;z-index:3;
   font-family:var(--font-b);font-size:.58rem;letter-spacing:.2em;
   color:rgba(255,250,240,.55);background:rgba(16,10,4,.4);
   backdrop-filter:blur(6px);padding:.28rem .7rem;border-radius:20px}
-.m-badge-wrap{position:absolute;top:1.1rem;left:1.1rem;z-index:3}
+.m-badge-wrap {
+  position:absolute;
+  top:1.1rem;
+  left:1.1rem;
+  z-index:3;
+}
 .m-badge{font-family:var(--font-b);font-size:.55rem;letter-spacing:.18em;
   text-transform:uppercase;font-weight:600;padding:.3rem .9rem;border-radius:2px}
 .m-badge.v{background:var(--gold-dark);color:var(--white)}
-.m-badge.a{background:rgba(240,225,200,.92);color:var(--gold-dark)}
+.m-badge.a {
+  background:rgba(240,225,200,.92);
+  color:var(--gold-dark);
+}
 
 /* Thumbnails strip */
 .m-thumbs{position:absolute;bottom:1rem;left:0;right:0;z-index:3;
@@ -400,7 +570,10 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
 .m-thumb{width:58px;height:40px;object-fit:cover;border-radius:2px;
   cursor:pointer;opacity:.45;border:2px solid transparent;
   transition:all .25s}
-.m-thumb.active,.m-thumb:hover{opacity:1;border-color:var(--gold-light)}
+.m-thumb.active,.m-thumb:hover {
+  opacity:1;
+  border-color:var(--gold-light);
+}
 
 /* Info panel */
 .m-info{flex:1;background:var(--white);display:flex;
@@ -412,7 +585,10 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
   background:var(--cream);border:1px solid var(--beige);
   display:flex;align-items:center;justify-content:center;
   cursor:pointer;font-size:.85rem;color:var(--text-mid);transition:all .3s}
-.m-close:hover{background:var(--beige);color:var(--text-dark)}
+.m-close:hover {
+  background:var(--beige);
+  color:var(--text-dark);
+}
 .m-loc{display:flex;align-items:center;gap:.35rem;font-family:var(--font-b);
   font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;
   color:var(--gold-dark);font-weight:500;margin-bottom:.5rem}
@@ -426,9 +602,16 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
   text-transform:uppercase;color:var(--text-mid);font-weight:400}
 
 /* Scrollable body */
-.m-info-body{padding:1.5rem 1.75rem 2rem;overflow-y:auto;flex:1}
+.m-info-body {
+  padding:1.5rem 1.75rem 2rem;
+  overflow-y:auto;
+  flex:1;
+}
 .m-info-body::-webkit-scrollbar{width:3px}
-.m-info-body::-webkit-scrollbar-thumb{background:var(--beige);border-radius:2px}
+.m-info-body::-webkit-scrollbar-thumb {
+  background:var(--beige);
+  border-radius:2px;
+}
 
 .m-sec-label{font-family:var(--font-b);font-size:.57rem;letter-spacing:.3em;
   text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:.5rem}
@@ -439,7 +622,12 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
 .m-metrics{display:grid;grid-template-columns:repeat(3,1fr);
   gap:1px;background:var(--cream-mid);border:1px solid var(--cream-mid);
   border-radius:4px;overflow:hidden;margin-bottom:1.5rem}
-.m-met{background:var(--white);padding:.9rem .75rem;text-align:center;transition:background .2s}
+.m-met {
+  background:var(--white);
+  padding:.9rem .75rem;
+  text-align:center;
+  transition:background .2s;
+}
 .m-met:hover{background:var(--cream)}
 .m-met-ico{font-size:1rem;margin-bottom:.25rem}
 .m-met-val{font-family:var(--font-d);font-size:1.1rem;font-weight:700;
@@ -448,7 +636,12 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
   text-transform:uppercase;color:var(--text-mid);font-weight:400;margin-top:.2rem}
 
 /* Features grid */
-.m-feats{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:1.5rem}
+.m-feats {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:.4rem;
+  margin-bottom:1.5rem;
+}
 .m-feat{display:flex;align-items:center;gap:.5rem;padding:.55rem .7rem;
   background:var(--cream);border:1px solid var(--cream-mid);border-radius:3px;
   font-family:var(--font-b);font-size:.7rem;font-weight:400;color:var(--text-dark)}
@@ -466,13 +659,22 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
 .m-row-v{color:var(--text-dark);font-weight:500}
 
 /* Actions */
-.m-actions{display:flex;gap:.7rem;padding-top:1rem;border-top:1px solid var(--cream-mid);margin-top:auto}
+.m-actions {
+  display:flex;
+  gap:.7rem;
+  padding-top:1rem;
+  border-top:1px solid var(--cream-mid);
+  margin-top:auto;
+}
 .m-btn-wa{display:flex;align-items:center;justify-content:center;gap:.45rem;
   padding:.9rem 1.1rem;background:hsl(142,70%,44%);color:var(--white);
   border:none;border-radius:2px;font-family:var(--font-b);font-size:.65rem;
   letter-spacing:.18em;text-transform:uppercase;font-weight:500;
   cursor:pointer;text-decoration:none;transition:all .3s;white-space:nowrap}
-.m-btn-wa:hover{background:hsl(142,70%,37%);transform:translateY(-2px)}
+.m-btn-wa:hover {
+  background:hsl(142,70%,37%);
+  transform:translateY(-2px);
+}
 
 @media(max-width:900px){
   .modal-wrap{flex-direction:column;max-height:95vh}
@@ -480,13 +682,21 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
 }
 @media(max-width:560px){
   .m-gal{flex:0 0 38%}
-  .m-info-head,.m-info-body{padding-left:1.1rem;padding-right:1.1rem}
+  .m-info-head,.m-info-body {
+    padding-left:1.1rem;
+    padding-right:1.1rem;
+  }
   .m-title{font-size:1.3rem}
   .m-feats{grid-template-columns:1fr}
 }
 
 /* ═══ NOSOTROS ═══════════════════════════════════════════════════════ */
-#nosotros{background:var(--beige);padding:8rem 0;position:relative;overflow:hidden}
+#nosotros {
+  background:var(--beige);
+  padding:8rem 0;
+  position:relative;
+  overflow:hidden;
+}
 /* Fondo decorativo */
 #nosotros::before{content:'';position:absolute;right:-5%;top:-10%;
   width:600px;height:600px;border-radius:50%;
@@ -501,12 +711,20 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
 .nos-eyebrow{margin-bottom:.6rem}
 .nos-title{font-family:var(--font-d);font-size:clamp(2.2rem,4vw,3.8rem);
   font-weight:700;line-height:.92;letter-spacing:-1px;color:var(--text-dark);margin-bottom:1.5rem}
-.nos-title em{font-style:italic;font-weight:400;color:var(--gold-dark)}
+.nos-title em {
+  font-style:italic;
+  font-weight:400;
+  color:var(--gold-dark);
+}
 .nos-body{font-family:var(--font-a);font-size:1.02rem;font-style:italic;
   color:var(--text-mid);line-height:1.85;margin-bottom:3rem}
 
 /* Stats 2x2 */
-.nos-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.nos-stats {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.25rem;
+}
 .nos-stat{background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.8);
   border-radius:4px;padding:1.4rem 1.2rem;transition:all .3s var(--ease)}
 .nos-stat:hover{background:var(--white);transform:translateY(-4px);
@@ -548,8 +766,13 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
 .nos-award span:last-child{font-family:var(--font-b);font-size:.44rem;
   letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.7)}
 
-@media(max-width:1024px){.nos-in{grid-template-columns:1fr;gap:4rem}.nos-r{height:420px}}
-@media(max-width:768px){.nos-in{padding:0 1.25rem}.nos-r{height:300px}}
+@media(max-width:1024px) {
+  .nos-in{grid-template-columns:1fr;
+  gap:4rem}.nos-r{height:420px};
+}
+@media(max-width:768px) {
+  .nos-in{padding:0 1.25rem}.nos-r{height:300px};
+}
 
 /* ═══ SERVICIOS ══════════════════════════════════════════════════════ */
 #servicios{background:var(--cream);padding:7rem 0}
@@ -563,8 +786,12 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
 .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);
   background:var(--beige);gap:1px;border-radius:4px;overflow:hidden;
   box-shadow:0 4px 24px rgba(120,90,40,.1)}
-@media(max-width:1024px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){.svc-grid{grid-template-columns:1fr}}
+@media(max-width:1024px) {
+  .svc-grid{grid-template-columns:repeat(2,1fr)};
+}
+@media(max-width:480px) {
+  .svc-grid{grid-template-columns:1fr};
+}
 
 .svc-item{background:var(--white);padding:2.25rem 1.75rem;
   position:relative;overflow:hidden;transition:background .35s}
@@ -594,22 +821,41 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
 @media(max-width:768px){.svc-in{padding:0 1.25rem}}
 
 /* ═══ RESEÑAS ════════════════════════════════════════════════════════ */
-#resenas{background:var(--sand);padding:7rem 0;position:relative;overflow:hidden}
+#resenas {
+  background:var(--sand);
+  padding:7rem 0;
+  position:relative;
+  overflow:hidden;
+}
 /* Giant quote mark */
 #resenas::before{content:'"';position:absolute;left:-2rem;top:-4rem;
   font-family:var(--font-d);font-size:36rem;font-weight:900;
   color:transparent;-webkit-text-stroke:1px hsl(36,25%,72%);
   pointer-events:none;user-select:none;line-height:1}
 
-.rev-in{max-width:1440px;margin:0 auto;padding:0 3rem;position:relative;z-index:1}
+.rev-in {
+  max-width:1440px;
+  margin:0 auto;
+  padding:0 3rem;
+  position:relative;
+  z-index:1;
+}
 .rev-hdr{text-align:center;margin-bottom:4rem}
 .rev-title{font-family:var(--font-d);font-size:clamp(2rem,3.8vw,3.5rem);
   font-weight:700;line-height:1;color:var(--text-dark)}
 .rev-title em{font-style:italic;color:var(--gold-dark)}
 
-.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-@media(max-width:1024px){.rev-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.rev-grid{grid-template-columns:1fr}}
+.rev-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+}
+@media(max-width:1024px) {
+  .rev-grid{grid-template-columns:repeat(2,1fr)};
+}
+@media(max-width:600px) {
+  .rev-grid{grid-template-columns:1fr};
+}
 
 .rev-card{background:rgba(255,252,248,.65);backdrop-filter:blur(8px);
   border:1px solid hsl(38,32%,72%);border-radius:4px;padding:1.9rem;
@@ -627,11 +873,18 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
 .rev-author{display:flex;align-items:center;gap:.8rem}
 .rev-av{width:44px;height:44px;border-radius:50%;object-fit:cover;
   border:2px solid var(--gold-light)}
-.rev-name{font-family:var(--font-b);font-size:.78rem;font-weight:500;color:var(--text-dark)}
+.rev-name {
+  font-family:var(--font-b);
+  font-size:.78rem;
+  font-weight:500;
+  color:var(--text-dark);
+}
 .rev-apt{font-family:var(--font-b);font-size:.6rem;letter-spacing:.1em;
   text-transform:uppercase;color:var(--gold-dark);font-weight:400;margin-top:.1rem}
 
-@media(max-width:768px){.rev-in{padding:0 1.25rem}#resenas::before{font-size:18rem}}
+@media(max-width:768px) {
+  .rev-in{padding:0 1.25rem}#resenas::before{font-size:18rem};
+}
 
 /* ═══ CONTACTO ═══════════════════════════════════════════════════════ */
 #contacto{background:var(--white);padding:8rem 0}
@@ -646,24 +899,40 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
 .cnt-desc{font-family:var(--font-a);font-size:1rem;font-style:italic;
   color:var(--text-mid);line-height:1.8;margin-bottom:3rem}
 
-.cnt-items{display:flex;flex-direction:column;gap:1.4rem;margin-bottom:2.5rem}
+.cnt-items {
+  display:flex;
+  flex-direction:column;
+  gap:1.4rem;
+  margin-bottom:2.5rem;
+}
 .cnt-item{display:flex;align-items:flex-start;gap:1.1rem}
 .cnt-ico{width:44px;height:44px;border-radius:3px;
   background:var(--cream);border:1px solid var(--beige);
   display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s}
-.cnt-item:hover .cnt-ico{background:var(--gg);border-color:transparent}
+.cnt-item:hover .cnt-ico {
+  background:var(--gg);
+  border-color:transparent;
+}
 .cnt-item:hover .cnt-ico svg{color:var(--white)!important}
 .cnt-ico svg{color:var(--gold-dark)}
 .cnt-label{font-family:var(--font-b);font-size:.58rem;letter-spacing:.2em;
   text-transform:uppercase;font-weight:500;color:var(--gold-dark);margin-bottom:.15rem}
-.cnt-val{font-family:var(--font-b);font-size:.85rem;color:var(--text-dark);font-weight:400}
+.cnt-val {
+  font-family:var(--font-b);
+  font-size:.85rem;
+  color:var(--text-dark);
+  font-weight:400;
+}
 
 .cnt-social{display:flex;gap:.55rem}
 .soc-btn{width:40px;height:40px;border-radius:50%;
   border:1px solid var(--beige);background:var(--cream);
   display:flex;align-items:center;justify-content:center;
   text-decoration:none;transition:all .3s}
-.soc-btn:hover{background:var(--gg);border-color:transparent}
+.soc-btn:hover {
+  background:var(--gg);
+  border-color:transparent;
+}
 .soc-btn:hover svg{color:var(--white)!important}
 .soc-btn svg{color:var(--gold-dark)}
 
@@ -683,14 +952,21 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
   padding:.8rem 1rem;font-family:var(--font-b);font-size:.85rem;
   font-weight:300;color:var(--text-dark);outline:none;resize:none;
   transition:border-color .3s,box-shadow .3s}
-.fg input::placeholder,.fg textarea::placeholder{color:var(--sand-deep)}
+.fg input::placeholder,.fg textarea::placeholder {
+  color:var(--sand-deep);
+}
 .fg input:focus,.fg textarea:focus{border-color:var(--gold);
   box-shadow:0 0 0 3px rgba(160,120,40,.1);background:var(--white)}
 .fg-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 @media(max-width:480px){.fg-row{grid-template-columns:1fr}}
 
-@media(max-width:1024px){.cnt-in{grid-template-columns:1fr;gap:4rem}}
-@media(max-width:768px){.cnt-in{padding:0 1.25rem}.cnt-form-wrap{padding:1.5rem}}
+@media(max-width:1024px) {
+  .cnt-in{grid-template-columns:1fr;
+  gap:4rem};
+}
+@media(max-width:768px) {
+  .cnt-in{padding:0 1.25rem}.cnt-form-wrap{padding:1.5rem};
+}
 
 /* ═══ MAPA ═══════════════════════════════════════════════════════════ */
 #mapa{padding:0}
@@ -706,11 +982,20 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='htt
   filter:sepia(10%) saturate(88%) brightness(103%)}
 
 /* ═══ FOOTER ═════════════════════════════════════════════════════════ */
-footer{background:var(--sand);border-top:1px solid var(--beige)}
+footer {
+  background:var(--sand);
+  border-top:1px solid var(--beige);
+}
 .ft-top{max-width:1440px;margin:0 auto;padding:3.5rem 3rem 2.5rem;
   display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:4rem}
-@media(max-width:900px){.ft-top{grid-template-columns:1fr 1fr;gap:2.5rem}}
-@media(max-width:580px){.ft-top{grid-template-columns:1fr;padding:2.5rem 1.25rem}}
+@media(max-width:900px) {
+  .ft-top{grid-template-columns:1fr 1fr;
+  gap:2.5rem};
+}
+@media(max-width:580px) {
+  .ft-top{grid-template-columns:1fr;
+  padding:2.5rem 1.25rem};
+}
 
 .ft-logo{font-family:var(--font-d);font-size:1.5rem;font-weight:700;
   color:var(--gold-dark);letter-spacing:1px;margin-bottom:.25rem}
@@ -720,7 +1005,12 @@ footer{background:var(--sand);border-top:1px solid var(--beige)}
   color:var(--text-mid);line-height:1.75}
 .ft-col-title{font-family:var(--font-b);font-size:.58rem;letter-spacing:.3em;
   text-transform:uppercase;font-weight:600;color:var(--gold-dark);margin-bottom:.9rem}
-.ft-links{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.ft-links {
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:.55rem;
+}
 .ft-links a{font-family:var(--font-b);font-size:.75rem;font-weight:300;
   color:var(--text-mid);text-decoration:none;transition:color .2s}
 .ft-links a:hover{color:var(--gold-dark)}
@@ -728,7 +1018,11 @@ footer{background:var(--sand);border-top:1px solid var(--beige)}
 .ft-bot{max-width:1440px;margin:0 auto;padding:1.2rem 3rem;
   border-top:1px solid var(--beige);
   display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-@media(max-width:768px){.ft-bot{padding:1.2rem 1.25rem;flex-direction:column;align-items:flex-start}}
+@media(max-width:768px) {
+  .ft-bot{padding:1.2rem 1.25rem;
+  flex-direction:column;
+  align-items:flex-start};
+}
 .ft-copy{font-family:var(--font-b);font-size:.62rem;letter-spacing:.15em;
   text-transform:uppercase;font-weight:300;color:var(--text-mid)}
 .ft-legal{display:flex;gap:1.5rem;flex-wrap:wrap}
@@ -748,15 +1042,34 @@ footer{background:var(--sand);border-top:1px solid var(--beige)}
 .ck-txt{flex:1;min-width:240px;font-family:var(--font-b);font-size:.76rem;
   font-weight:300;color:var(--text-dark);line-height:1.6}
 .ck-txt a{color:var(--gold-dark);text-decoration:underline}
-.ck-acts{display:flex;gap:.55rem;flex-wrap:wrap;align-items:center}
+.ck-acts {
+  display:flex;
+  gap:.55rem;
+  flex-wrap:wrap;
+  align-items:center;
+}
 .ck-btn{font-family:var(--font-b);font-size:.62rem;font-weight:500;
   letter-spacing:.18em;text-transform:uppercase;
   padding:.6rem 1.2rem;border-radius:2px;cursor:pointer;transition:all .25s}
 .ck-acc{background:var(--gg);color:var(--white);border:none}
-.ck-acc:hover{transform:scale(1.03);box-shadow:0 4px 16px rgba(120,90,40,.3)}
-.ck-rej{background:var(--cream);color:var(--text-mid);border:1px solid var(--beige)}
-.ck-rej:hover{border-color:var(--sand-deep);color:var(--text-dark)}
-.ck-cfg{background:transparent;color:var(--gold-dark);border:1px solid var(--gold-light)}
+.ck-acc:hover {
+  transform:scale(1.03);
+  box-shadow:0 4px 16px rgba(120,90,40,.3);
+}
+.ck-rej {
+  background:var(--cream);
+  color:var(--text-mid);
+  border:1px solid var(--beige);
+}
+.ck-rej:hover {
+  border-color:var(--sand-deep);
+  color:var(--text-dark);
+}
+.ck-cfg {
+  background:transparent;
+  color:var(--gold-dark);
+  border:1px solid var(--gold-light);
+}
 .ck-cfg:hover{background:rgba(160,120,40,.1)}
 
 #ck-panel{display:none;position:fixed;inset:0;z-index:4000;
@@ -772,21 +1085,39 @@ footer{background:var(--sand);border-top:1px solid var(--beige)}
   margin-bottom:1.4rem;line-height:1.6;font-weight:300}
 .ck-itm{border:1px solid var(--cream-mid);border-radius:3px;padding:.9rem;
   margin-bottom:.65rem;background:var(--cream)}
-.ck-itm-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:.35rem}
-.ck-itm-title{font-family:var(--font-d);font-size:.9rem;font-weight:700;color:var(--text-dark)}
+.ck-itm-hdr {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:.35rem;
+}
+.ck-itm-title {
+  font-family:var(--font-d);
+  font-size:.9rem;
+  font-weight:700;
+  color:var(--text-dark);
+}
 .ck-itm-desc{font-family:var(--font-b);font-size:.74rem;color:var(--text-mid);
   line-height:1.5;font-weight:300}
 .ck-tag{font-size:.56rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
   padding:.18rem .5rem;border-radius:20px;margin-left:.4rem}
 .ck-req{background:hsl(120,35%,88%);color:hsl(120,45%,28%)}
-.tgl{position:relative;display:inline-block;width:42px;height:22px;flex-shrink:0}
+.tgl {
+  position:relative;
+  display:inline-block;
+  width:42px;
+  height:22px;
+  flex-shrink:0;
+}
 .tgl input{opacity:0;width:0;height:0}
 .tgl-sl{position:absolute;cursor:pointer;inset:0;background:var(--beige);
   border-radius:22px;transition:.3s}
 .tgl-sl::before{content:'';position:absolute;height:16px;width:16px;
   left:3px;bottom:3px;background:var(--white);border-radius:50%;transition:.3s}
 .tgl input:checked+.tgl-sl{background:var(--gold)}
-.tgl input:checked+.tgl-sl::before{transform:translateX(20px)}
+.tgl input:checked+.tgl-sl::before {
+  transform:translateX(20px);
+}
 .tgl input:disabled+.tgl-sl{cursor:not-allowed;opacity:.7}
 .ck-box-acts{display:flex;gap:.65rem;margin-top:1.4rem}
 .ck-save{flex:1;padding:.8rem;border-radius:2px;font-family:var(--font-b);
@@ -796,7 +1127,10 @@ footer{background:var(--sand);border-top:1px solid var(--beige)}
 .ck-cancel{padding:.8rem 1.1rem;border-radius:2px;font-family:var(--font-b);
   font-size:.68rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;
   background:transparent;color:var(--text-mid);border:1px solid var(--beige);cursor:pointer}
-.ck-cancel:hover{color:var(--text-dark);border-color:var(--sand-deep)}
+.ck-cancel:hover {
+  color:var(--text-dark);
+  border-color:var(--sand-deep);
+}
 </style>
 </head>
 <body>
@@ -1288,191 +1622,632 @@ function closeCkPanel(){ document.getElementById('ck-panel').classList.remove('s
 /* ═══════════════════════════════════════════════════════════
    DATOS — VENTA
 ═══════════════════════════════════════════════════════════ */
-const ventaData=[
-  {img:"https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=75&auto=format&fit=crop",price:"485.000 €",priceUnit:"",location:"Marbella, España",beds:3,baths:2,area:"120 m²",year:2018,parking:"Garaje doble",community:"Urb. privada",features:["Piscina privada","Terraza 60 m²","Garaje doble","Vistas al mar","Jardín tropical","Domótica"],gallery:["https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1200&q=85&auto=format&fit=crop"],names:{es:"Villa Frente al Mar",ru:"Вилла у моря",en:"Seafront Villa"},descs:{es:"Espectacular villa con vistas panorámicas al Mediterráneo, piscina privada infinity y terraza de 60 m². Acabados de primera calidad con materiales naturales, domótica integrada y jardín tropical. Ubicada en exclusiva urbanización privada a 5 minutos de Puerto Banús.",ru:"Вилла с видом на море, бассейн-инфинити, терраса 60 м², умный дом.",en:"Spectacular villa with panoramic Mediterranean views, private infinity pool and 60 m² terrace. Smart home, natural materials, 5 min from Puerto Banús."}},
-  {img:"https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=75&auto=format&fit=crop",price:"320.000 €",priceUnit:"",location:"Barcelona, España",beds:2,baths:2,area:"95 m²",year:2020,parking:"Plaza incluida",community:"Edificio exclusivo",features:["Ático dúplex","Terraza 35 m²","A/C","Céntrico","Vistas ciudad","Ascensor privado"],gallery:["https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1554995207-c18c203602cb?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&q=85&auto=format&fit=crop"],names:{es:"Ático Diseño Barcelona",ru:"Пентхаус в Барселоне",en:"Barcelona Design Penthouse"},descs:{es:"Moderno ático dúplex en el Eixample barcelonés con terraza privada de 35 m² y vistas a los tejados. Interiorismo de autor, cocina Bulthaup, baños Duravit. Certificación energética A++.",ru:"Дуплекс-пентхаус в центре Барселоны. Терраса 35 м², кухня Bulthaup, рейтинг A++.",en:"Modern duplex penthouse in Eixample with 35 m² private terrace. Designer interiors, Bulthaup kitchen, A++ energy rating."}},
-  {img:"https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=75&auto=format&fit=crop",price:"650.000 €",priceUnit:"",location:"Ibiza, España",beds:4,baths:3,area:"210 m²",year:2016,parking:"Garaje doble+ext",community:"Finca privada",features:["Piscina infinity","Jardín 1.200 m²","Garaje doble","Bodega","Guest house","Pista de tenis"],gallery:["https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1200&q=85&auto=format&fit=crop"],names:{es:"Villa de Lujo Ibiza",ru:"Люкс-вилла Ибица",en:"Ibiza Luxury Villa"},descs:{es:"Residencia exclusiva en Santa Eulalia con jardín tropical de 1.200 m², piscina infinity con vistas al mar y guest house independiente. Arquitectura ibicenca contemporánea premiada, piedra local y madera de teca.",ru:"Резиденция на 1200 м² с тропическим садом, гостевым домом и бассейном-инфинити.",en:"Exclusive Santa Eulalia residence with 1,200 m² tropical garden, infinity pool and independent guest house. Award-winning Ibizan architecture."}},
-  {img:"https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=75&auto=format&fit=crop",price:"195.000 €",priceUnit:"",location:"Costa del Sol, España",beds:2,baths:1,area:"75 m²",year:2022,parking:"Parking comunitario",community:"Residencial Premium",features:["Primera línea","Piscina com.","Reforma 2022","Terraza","Trastero","Rentabilidad 7%"],gallery:["https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=1200&q=85&auto=format&fit=crop"],names:{es:"Apartamento Playa Costa",ru:"Апартаменты на пляже",en:"Beachfront Costa Apartment"},descs:{es:"Apartamento reformado en 2022 a 50m de la playa. Cocina americana abierta, baño en mármol, suelos de microcemento. Rentabilidad turística del 7% anual garantizada.",ru:"Реформа 2022. 50 м от пляжа. Гарантированная доходность 7% годовых.",en:"Fully renovated 2022, 50m from beach. Marble bathroom, microcement floors. 7% annual tourist yield guaranteed."}},
-  {img:"https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&q=75&auto=format&fit=crop",price:"890.000 €",priceUnit:"",location:"Mallorca, España",beds:5,baths:4,area:"350 m²",year:1920,parking:"Garaje 3 coches",community:"Finca histórica",features:["Viñedo 3 ha","Piscina piedra","Capilla privada","Bodega centenaria","Olivares","Vistas Tramuntana"],gallery:["https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=1200&q=85&auto=format&fit=crop"],names:{es:"Finca Tradicional Mallorca",ru:"Традиционная финка Майорка",en:"Traditional Mallorca Finca"},descs:{es:"Finca mallorquina del s.XVIII restaurada en 10 hectáreas. Viñedo de 3 ha con D.O. propia, olivares centenarios y piscina tallada en piedra marés. Capilla y bodega originales.",ru:"Финка XVIII века, 10 га, виноградник 3 га с собственным DO, каменный бассейн, часовня.",en:"18th-century Mallorcan finca on 10 hectares. 3-ha vineyard with own D.O., ancient olive groves, stone pool and original chapel."}},
-  {img:"https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=800&q=75&auto=format&fit=crop",price:"275.000 €",priceUnit:"",location:"Valencia, España",beds:3,baths:2,area:"110 m²",year:2024,parking:"Plaza incluida",community:"Nuevo desarrollo",features:["Obra nueva 2024","Eficiencia A++","Piscina com.","Zonas verdes","Domótica","Fotovoltaica"],gallery:["https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1554995207-c18c203602cb?w=1200&q=85&auto=format&fit=crop"],names:{es:"Residencial Nuevo Valencia",ru:"Новый жилой комплекс Валенсия",en:"New Valencia Residential"},descs:{es:"Obra nueva 2024 con certificación A++ en el norte de Valencia. Siemens, porcelánico gran formato, instalación fotovoltaica incluida. El más eficiente del mercado.",ru:"Новостройка 2024, рейтинг A++, солнечная установка включена.",en:"New 2024 build with A++ energy rating, integrated photovoltaic system. Most efficient property in the market."}},
-  {img:"https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=800&q=75&auto=format&fit=crop",price:"1.200.000 €",priceUnit:"",location:"Costa Brava, España",beds:6,baths:5,area:"480 m²",year:2015,parking:"Garaje 4+embarcadero",community:"Finca privada exclusiva",features:["Acceso privado al mar","Embarcadero 3 barcos","Spa interior","Helipuerto","Cine privado","Staff incluido"],gallery:["https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1200&q=85&auto=format&fit=crop"],names:{es:"Mansión Costa Brava",ru:"Особняк Коста-Брава",en:"Costa Brava Mansion"},descs:{es:"Mansión única con acceso privado a cala exclusiva, embarcadero para 3 embarcaciones, spa interior con piscina climatizada, sauna y hammam. Helipuerto homologado, cine privado y sala de vinos.",ru:"Особняк с частным пляжем, причалом, вертолётной площадкой, спа и кинозалом.",en:"Unique mansion with private cove access, 3-vessel jetty, indoor spa, helipad and cinema room. Full staff included."}},
-  {img:"https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=800&q=75&auto=format&fit=crop",price:"145.000 €",priceUnit:"",location:"Alicante, España",beds:1,baths:1,area:"55 m²",year:2019,parking:"Parking com.",community:"Complejo turístico",features:["Rentabilidad 8-10%","Totalmente equipado","Piscina","Gestión incluida","Diseño de autor","Comunidad 24h"],gallery:["https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&q=85&auto=format&fit=crop"],names:{es:"Estudio Inversión Alicante",ru:"Студия для инвестиций",en:"Alicante Investment Studio"},descs:{es:"Estudio premium con rentabilidad del 8-10% anual. Gestión integral incluida: recepción, limpieza, check-in/out. Ocupación media 85% temporada alta.",ru:"Доходность 8-10% годовых. Полное управление включено. Загрузка 85% в высокий сезон.",en:"Premium studio with 8-10% annual yield. Full management included. 85% average occupancy in high season."}}
+const ventaData = [
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  }
+
 ];
 
-const alquilerData=[
-  {img:"https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&q=75&auto=format&fit=crop",price:"320 €",priceUnit:"/noche",location:"Marbella, España",beds:3,baths:2,area:"120 m²",minNights:3,maxGuests:6,deposit:"1.200 €",features:["Piscina privada climatizada","WiFi fibra 600Mb","A/C Inverter","Vistas al mar","Desayuno incluido","Transfer aeropuerto"],gallery:["https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=1200&q=85&auto=format&fit=crop"],names:{es:"Suite Brisa Oceánica",ru:"Сюит «Океанский бриз»",en:"Ocean Breeze Suite"},descs:{es:"Suite frente al mar con vistas panorámicas al Mediterráneo. Mármol de Carrara, terraza con jacuzzi privado y piscina climatizada. Conserjería 24h, chef privado disponible y transfer incluido desde Málaga.",ru:"Мраморный сюит с видом на море. Джакузи на террасе, круглосуточный консьерж, трансфер из Малаги.",en:"Oceanfront suite with panoramic views. Carrara marble, terrace jacuzzi, 24h concierge and transfer from Málaga airport included."}},
-  {img:"https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=75&auto=format&fit=crop",price:"180 €",priceUnit:"/noche",location:"Costa del Sol, España",beds:1,baths:1,area:"50 m²",minNights:2,maxGuests:2,deposit:"400 €",features:["Primera línea","Balcón privado","WiFi","Limpieza diaria","Smart TV","Nespresso"],gallery:["https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1200&q=85&auto=format&fit=crop"],names:{es:"Estudio Costero",ru:"Прибрежная студия",en:"Coastal Studio"},descs:{es:"Estudio de diseño en primera línea de playa con balcón privado a metros del mar. Diseño minimal mediterráneo, ducha tropical y acceso a piscina comunitaria al nivel del mar.",ru:"Дизайнерская студия на первой линии. Балкон, тропический душ, бассейн у моря.",en:"Design studio on the beachfront with private balcony. Mediterranean minimal style, tropical shower and sea-level communal pool."}},
-  {img:"https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=75&auto=format&fit=crop",price:"550 €",priceUnit:"/noche",location:"Miami, EE.UU.",beds:4,baths:3,area:"250 m²",minNights:5,maxGuests:8,deposit:"2.500 €",features:["Piscina infinity azotea","Conserjería premium","Spa privado","Skyline 360°","Valet parking","Butler service"],gallery:["https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=1200&q=85&auto=format&fit=crop"],names:{es:"Ático Skyline Miami",ru:"Пентхаус Skyline Майами",en:"Miami Skyline Penthouse"},descs:{es:"Ático de doble altura en Brickell con piscina infinity en azotea y vistas 360° al skyline de Miami y Biscayne Bay. 250 m², Sub-Zero, terraza 80 m², spa del edificio y butler service incluido.",ru:"Двухуровневый пентхаус в Брикелле. 360° вид, бассейн-инфинити, батлер-сервис.",en:"Double-height penthouse in Brickell with rooftop infinity pool and 360° skyline views. Sub-Zero kitchen, 80 m² terrace, butler service."}},
-  {img:"https://images.unsplash.com/photo-1533044309907-0fa3413da946?w=800&q=75&auto=format&fit=crop",price:"420 €",priceUnit:"/noche",location:"Ibiza, España",beds:4,baths:3,area:"200 m²",minNights:7,maxGuests:8,deposit:"2.000 €",features:["Villa privada","Jardín 1.500 m²","BBQ gourmet","Piscina sal","Buggy eléctrico","Chef privado"],gallery:["https://images.unsplash.com/photo-1533044309907-0fa3413da946?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1200&q=85&auto=format&fit=crop"],names:{es:"Villa Mediterránea Ibiza",ru:"Средиземноморская вилла Ибица",en:"Ibiza Mediterranean Villa"},descs:{es:"Villa rústico-contemporánea en Santa Gertrudis con jardín 1.500 m², piscina de agua salada, BBQ de leña y buggy eléctrico incluido. Bóvedas de piedra, alfarería y chef privado bajo petición.",ru:"Рустикальная вилла с садом 1500 м², соляным бассейном и частным поваром.",en:"Rustic-contemporary villa with 1,500 m² garden, salt pool, wood BBQ and private chef on request."}},
-  {img:"https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=75&auto=format&fit=crop",price:"250 €",priceUnit:"/noche",location:"Barcelona, España",beds:2,baths:1,area:"90 m²",minNights:3,maxGuests:4,deposit:"800 €",features:["Diseño de autor","Gràcia","Terraza 25 m²","WiFi 1Gb","Netflix/Spotify","Bicicletas"],gallery:["https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1554995207-c18c203602cb?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&q=85&auto=format&fit=crop"],names:{es:"Loft Urbano Barcelona",ru:"Городской лофт Барселона",en:"Barcelona Urban Loft"},descs:{es:"Loft de diseño en Gràcia con ladrillo visto, techos 4m y terraza privada 25 m². Mobiliario de coleccionista, Smeg, WiFi 1Gb. A 10 minutos del Passeig de Gràcia.",ru:"Дизайнерский лофт в Грасии. Потолки 4 м, терраса 25 м², WiFi 1 Гбит.",en:"Designer loft in Gràcia with 4m ceilings, 25 m² private terrace, collector furniture and WiFi 1Gbps."}},
-  {img:"https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=800&q=75&auto=format&fit=crop",price:"380 €",priceUnit:"/noche",location:"Bali, Indonesia",beds:3,baths:3,area:"180 m²",minNights:5,maxGuests:6,deposit:"1.500 €",features:["Open air","Piscina privada","Staff completo","Jardín tropical","Yoga deck","Transfers"],gallery:["https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&q=85&auto=format&fit=crop"],names:{es:"Retiro Tropical Bali",ru:"Тропический ретрит Бали",en:"Bali Tropical Retreat"},descs:{es:"Villa balinesa open-air con piscina desbordante privada entre palmeras. Staff completo: mayordomo, chef, guía. Yoga deck con vistas a los arrozales de Ubud y transfers incluidos.",ru:"Открытая балинезийская вилла. Персонал, личный повар, йога-дек с видом на рисовые террасы.",en:"Open-air Balinese villa with private overflow pool. Full staff including butler, chef and local guide. Yoga deck with Ubud rice terrace views."}},
-  {img:"https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=75&auto=format&fit=crop",price:"290 €",priceUnit:"/noche",location:"Santorini, Grecia",beds:2,baths:2,area:"100 m²",minNights:4,maxGuests:4,deposit:"1.200 €",features:["Arquitectura cueva","Piscina caldera","Jacuzzi exterior","Vistas Oia","Desayuno","Cena romántica"],gallery:["https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1200&q=85&auto=format&fit=crop"],names:{es:"Casa Cueva Santorini",ru:"Пещерный дом Санторини",en:"Santorini Cave House"},descs:{es:"Cueva volcánica en Oia con piscina infinity sobre la caldera y jacuzzi exterior con las puestas de sol más icónicas del Mediterráneo. Desayuno griego y cena romántica bajo las estrellas incluidos.",ru:"Пещерный дом в Ое. Инфинити-бассейн над кальдерой. Завтрак и романтический ужин включены.",en:"Volcanic cave house in Oia with infinity pool over the caldera. Greek breakfast and romantic starlit dinner included."}},
-  {img:"https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=75&auto=format&fit=crop",price:"195 €",priceUnit:"/noche",location:"Tenerife, España",beds:2,baths:2,area:"85 m²",minNights:3,maxGuests:4,deposit:"600 €",features:["Vista al Teide","Piscina com.","5 min playa","Netflix 4K","BBQ privada","Parking"],gallery:["https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=1200&q=85&auto=format&fit=crop","https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=1200&q=85&auto=format&fit=crop"],names:{es:"Apartamento Vista Teide",ru:"Апартаменты с видом на Тейде",en:"Teide View Apartment"},descs:{es:"Apartamento moderno con vistas directas al Teide desde salón y terraza. 5 min a pie de Las Américas, zona BBQ privada y garaje. El Parque Nacional a 20 minutos.",ru:"Вид на Тейде, 5 мин от пляжа, BBQ-зона, Netflix 4K.",en:"Modern apartment with direct Teide views, 5-min walk to Las Américas beach, private BBQ area and parking."}}
+const alquilerData = [
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  },
+
+  {
+  }
+
 ];
 
 /* ═══════════════════════════════════════════════════════════
    TRADUCCIONES
 ═══════════════════════════════════════════════════════════ */
-const T={
-  es:{nav_inicio:'Inicio',nav_apart:'Propiedades',nav_about:'Nosotros',nav_serv:'Servicios',nav_reviews:'Reseñas',nav_contact:'Contactar',
-    hero_eyebrow:'Inmobiliaria de Lujo · Mediterráneo',hero_line1:'Summer',hero_line2:'Dreams',hero_line3:'Estate',
-    hero_desc:'Colección exclusiva de propiedades de lujo en los destinos más deseados del Mediterráneo.',
-    hero_cta:'Ver Propiedades',hero_cta2:'Conocernos',
-    stat_0:'Años',stat_1:'Clientes',stat_2:'Prop.',stat_3:'Satisfacción',
-    apt_eyebrow:'Descubre',apt_title_1:'Nuestras',apt_title_2:'Propiedades',
-    tab_venta:'Venta',tab_alquiler:'Alquiler',
-    about_eyebrow:'Quiénes somos',about_title_1:'Sobre',about_title_2:'Summer Dreams',
-    about_text:'Durante más de 15 años, Summer Dreams ha reunido una colección exclusiva de propiedades de lujo en los destinos más deseados del Mediterráneo. Nuestro compromiso con la excelencia y el servicio personalizado nos distingue.',
-    about_s0:'Años de Excelencia',about_s1:'Clientes Satisfechos',about_s2:'Propiedades',about_s3:'Satisfacción',
-    serv_eyebrow:'Lo que ofrecemos',serv_title_1:'Servicios',serv_title_2:'Premium',
-    svc_0_t:'WiFi de Alta Velocidad',svc_0_d:'Fibra óptica hasta 1 Gbps. Streaming 4K sin interrupciones.',
-    svc_1_t:'Limpieza Profesional',svc_1_d:'Servicio diario con productos ecológicos premium. Cambio de lencería.',
-    svc_2_t:'Piscina Premium',svc_2_d:'Climatizadas, sal u ozono. Servicio de toallas y barra de refrescos.',
-    svc_3_t:'Parking VIP',svc_3_d:'Garaje privado con punto de carga eléctrica. Valet disponible.',
-    svc_4_t:'Climatización Total',svc_4_d:'Inverter última generación. Control por estancias y domótica integrada.',
-    svc_5_t:'Cocina Gourmet',svc_5_d:'Gaggenau, Sub-Zero o Siemens. Menaje completo de chef incluido.',
-    svc_6_t:'Seguridad 24/7',svc_6_d:'CCTV, alarma perimetral y portero electrónico. Respuesta en 5 min.',
-    svc_7_t:'Conserjería Personal',svc_7_d:'24h: reservas, transfers, chef, yate y experiencias exclusivas.',
-    rev_eyebrow:'Lo que dicen',rev_title_1:'Clientes',rev_title_2:'Satisfechos',
-    contact_eyebrow:'Ponte en contacto',contact_title_1:'Hablemos',contact_title_2:'de tu propiedad',
-    contact_desc:'Nuestro equipo de expertos está disponible para asesorarte en la compra, venta o alquiler de tu próxima propiedad de lujo.',
-    info_phone:'Teléfono',info_address:'Dirección',
-    form_title:'Envíanos un mensaje',
-    form_name_label:'Nombre',form_name:'Nombre completo',
-    form_email_label:'Email',form_email:'email@ejemplo.com',
-    form_phone_label:'Teléfono',form_phone:'+34 000 000 000',
-    form_message_label:'Mensaje',form_message:'Cuéntanos qué estás buscando...',
-    form_send:'Enviar mensaje',form_ok:'¡Gracias! Te contactaremos en 24 horas.',form_err:'Algo salió mal. Inténtalo de nuevo.',
-    map_eyebrow:'Encuéntranos',map_title_1:'Nuestra',map_title_2:'Oficina',
-    footer_legal:'Aviso Legal',footer_privacy:'Privacidad',footer_cookies:'Cookies',footer_cookie_pref:'⚙️ Preferencias',
-    footer:'© 2026 Summer Dreams. Todos los derechos reservados.',
-    modal_desc_title:'Descripción',modal_feat_title:'Características incluidas',modal_details_title:'Ficha técnica',
-    m_beds:'Habitaciones',m_baths:'Baños',m_area:'Superficie',
-    m_year:'Año construcción',m_parking:'Parking',m_comm:'Comunidad',
-    m_min:'Mín. noches',m_guests:'Huéspedes máx.',m_dep:'Fianza',
-    m_cta_v:'Solicitar información',m_cta_a:'Reservar ahora'},
-  ru:{nav_inicio:'Главная',nav_apart:'Недвижимость',nav_about:'О нас',nav_serv:'Услуги',nav_reviews:'Отзывы',nav_contact:'Контакт',
-    hero_eyebrow:'Элитная недвижимость · Средиземноморье',hero_line1:'Summer',hero_line2:'Dreams',hero_line3:'Estate',
-    hero_desc:'Эксклюзивная коллекция элитной недвижимости в самых желанных средиземноморских направлениях.',
-    hero_cta:'Смотреть объекты',hero_cta2:'О компании',
-    stat_0:'Лет',stat_1:'Клиентов',stat_2:'Объектов',stat_3:'Рейтинг',
-    apt_eyebrow:'Откройте для себя',apt_title_1:'Наши',apt_title_2:'Объекты',
-    tab_venta:'Продажа',tab_alquiler:'Аренда',
-    about_eyebrow:'Кто мы',about_title_1:'О компании',about_title_2:'Summer Dreams',
-    about_text:'На протяжении более 15 лет Summer Dreams формирует эксклюзивную коллекцию элитной недвижимости в самых желанных уголках Средиземноморья.',
-    about_s0:'Лет опыта',about_s1:'Довольных клиентов',about_s2:'Объектов',about_s3:'Рейтинг',
-    serv_eyebrow:'Что мы предлагаем',serv_title_1:'Услуги',serv_title_2:'Премиум',
-    svc_0_t:'Высокоскоростной WiFi',svc_0_d:'Оптоволокно до 1 Гбит/с. Стриминг 4K без прерываний.',
-    svc_1_t:'Профессиональная уборка',svc_1_d:'Ежедневная уборка с экологичными продуктами.',
-    svc_2_t:'Премиум бассейн',svc_2_d:'Подогреваемые бассейны с соляной/озоновой обработкой.',
-    svc_3_t:'VIP парковка',svc_3_d:'Частное место с зарядкой для электромобилей.',
-    svc_4_t:'Климат-контроль',svc_4_d:'Инверторные системы, умный дом.',
-    svc_5_t:'Гурме кухня',svc_5_d:'Gaggenau, Sub-Zero или Siemens.',
-    svc_6_t:'Охрана 24/7',svc_6_d:'CCTV, периметральная сигнализация.',
-    svc_7_t:'Персональный консьерж',svc_7_d:'24h: бронирование, трансфер, яхта.',
-    rev_eyebrow:'Отзывы',rev_title_1:'Довольные',rev_title_2:'Клиенты',
-    contact_eyebrow:'Свяжитесь с нами',contact_title_1:'Поговорим',contact_title_2:'о вашей недвижимости',
-    contact_desc:'Наши эксперты готовы проконсультировать вас по покупке, продаже или аренде элитной недвижимости.',
-    info_phone:'Телефон',info_address:'Адрес',
-    form_title:'Отправить сообщение',
-    form_name_label:'Имя',form_name:'Полное имя',
-    form_email_label:'Email',form_email:'email@example.com',
-    form_phone_label:'Телефон',form_phone:'+7 000 000 00 00',
-    form_message_label:'Сообщение',form_message:'Расскажите, что вы ищете...',
-    form_send:'Отправить',form_ok:'Спасибо! Свяжемся в течение 24 часов.',form_err:'Что-то пошло не так.',
-    map_eyebrow:'Найдите нас',map_title_1:'Наш',map_title_2:'Офис',
-    footer_legal:'Правовая информация',footer_privacy:'Конфиденциальность',footer_cookies:'Cookies',footer_cookie_pref:'⚙️ Настройки',
-    footer:'© 2026 Summer Dreams. Все права защищены.',
-    modal_desc_title:'Описание',modal_feat_title:'Удобства',modal_details_title:'Характеристики',
-    m_beds:'Спальни',m_baths:'Ванные',m_area:'Площадь',
-    m_year:'Год постройки',m_parking:'Парковка',m_comm:'Комплекс',
-    m_min:'Мин. ночей',m_guests:'Макс. гостей',m_dep:'Депозит',
-    m_cta_v:'Запросить информацию',m_cta_a:'Забронировать'},
-  en:{nav_inicio:'Home',nav_apart:'Properties',nav_about:'About',nav_serv:'Services',nav_reviews:'Reviews',nav_contact:'Contact',
-    hero_eyebrow:'Luxury Real Estate · Mediterranean',hero_line1:'Summer',hero_line2:'Dreams',hero_line3:'Estate',
-    hero_desc:'Exclusive collection of luxury properties in the most desirable Mediterranean destinations.',
-    hero_cta:'View Properties',hero_cta2:'About Us',
-    stat_0:'Years',stat_1:'Clients',stat_2:'Properties',stat_3:'Satisfaction',
-    apt_eyebrow:'Discover',apt_title_1:'Our',apt_title_2:'Properties',
-    tab_venta:'For Sale',tab_alquiler:'Rental',
-    about_eyebrow:'Who we are',about_title_1:'About',about_title_2:'Summer Dreams',
-    about_text:"For over 15 years, Summer Dreams has curated an exclusive collection of luxury properties in the Mediterranean's most desirable destinations.",
-    about_s0:'Years of Excellence',about_s1:'Happy Clients',about_s2:'Properties',about_s3:'Satisfaction',
-    serv_eyebrow:'What we offer',serv_title_1:'Premium',serv_title_2:'Services',
-    svc_0_t:'High-Speed WiFi',svc_0_d:'Fiber optic up to 1 Gbps. 4K streaming without interruptions.',
-    svc_1_t:'Professional Cleaning',svc_1_d:'Daily cleaning with premium eco products.',
-    svc_2_t:'Premium Pool',svc_2_d:'Heated, salt or ozone treated. Towel service and drinks bar.',
-    svc_3_t:'VIP Parking',svc_3_d:'Private garage with EV charging. Valet available.',
-    svc_4_t:'Full Climate Control',svc_4_d:'Latest Inverter systems and smart home.',
-    svc_5_t:'Gourmet Kitchen',svc_5_d:'Gaggenau, Sub-Zero or Siemens appliances.',
-    svc_6_t:'24/7 Security',svc_6_d:'CCTV, alarm and perimeter monitoring.',
-    svc_7_t:'Personal Concierge',svc_7_d:'24h: bookings, transfers, chef, yacht.',
-    rev_eyebrow:'What they say',rev_title_1:'Happy',rev_title_2:'Clients',
-    contact_eyebrow:'Get in touch',contact_title_1:"Let's talk",contact_title_2:'about your property',
-    contact_desc:"Our team of experts is available to advise you on buying, selling or renting your next luxury property.",
-    info_phone:'Phone',info_address:'Address',
-    form_title:'Send us a message',
-    form_name_label:'Name',form_name:'Full name',
-    form_email_label:'Email',form_email:'email@example.com',
-    form_phone_label:'Phone',form_phone:'+1 000 000 0000',
-    form_message_label:'Message',form_message:'Tell us what you are looking for...',
-    form_send:'Send message',form_ok:"Thank you! We'll contact you within 24 hours.",form_err:'Something went wrong.',
-    map_eyebrow:'Find us',map_title_1:'Our',map_title_2:'Office',
-    footer_legal:'Legal Notice',footer_privacy:'Privacy',footer_cookies:'Cookies',footer_cookie_pref:'⚙️ Preferences',
-    footer:'© 2026 Summer Dreams. All rights reserved.',
-    modal_desc_title:'Description',modal_feat_title:'Included features',modal_details_title:'Technical sheet',
-    m_beds:'Bedrooms',m_baths:'Bathrooms',m_area:'Area',
-    m_year:'Year built',m_parking:'Parking',m_comm:'Community',
-    m_min:'Min nights',m_guests:'Max guests',m_dep:'Deposit',
-    m_cta_v:'Request information',m_cta_a:'Book now'}
-};
+/* ═══════════════════════════════════════════════════════════
+   TRADUCCIONES — Sistema i18n (ES / RU / EN)
+   Para añadir/cambiar texto: edita las claves correspondientes
+   en cada uno de los tres objetos de idioma.
+═══════════════════════════════════════════════════════════ */
+const T = {
 
+  /* ── ESPAÑOL ── */
+  es: {
+
+    /* Navegación */
+    nav_inicio: 'Inicio',
+    nav_apart: 'Propiedades',
+    nav_about: 'Nosotros',
+    nav_serv: 'Servicios',
+    nav_reviews: 'Reseñas',
+    nav_contact: 'Contactar',
+
+    /* Hero */
+    hero_eyebrow: 'Inmobiliaria de Lujo · Mediterráneo',
+    hero_line1: 'Summer',
+    hero_line2: 'Dreams',
+    hero_line3: 'Estate',
+    hero_desc: 'Colección exclusiva de propiedades de lujo en los destinos más deseados del Mediterráneo.',
+    hero_cta: 'Ver Propiedades',
+    hero_cta2: 'Conocernos',
+
+    /* Estadísticas */
+    stat_0: 'Años',
+    stat_1: 'Clientes',
+    stat_2: 'Prop.',
+    stat_3: 'Satisfacción',
+
+    /* Apartamentos */
+    apt_eyebrow: 'Descubre',
+    apt_title_1: 'Nuestras',
+    apt_title_2: 'Propiedades',
+    tab_venta: 'Venta',
+    tab_alquiler: 'Alquiler',
+
+    /* Nosotros */
+    about_eyebrow: 'Quiénes somos',
+    about_title_1: 'Sobre',
+    about_title_2: 'Summer Dreams',
+    about_text: 'Durante más de 15 años, Summer Dreams ha reunido una colección exclusiva de propiedades de lujo en los destinos más deseados del Mediterráneo. Nuestro compromiso con la excelencia y el servicio personalizado nos distingue.',
+    about_s0: 'Años de Excelencia',
+    about_s1: 'Clientes Satisfechos',
+    about_s2: 'Propiedades',
+    about_s3: 'Satisfacción',
+
+    /* Servicios */
+    serv_eyebrow: 'Lo que ofrecemos',
+    serv_title_1: 'Servicios',
+    serv_title_2: 'Premium',
+    svc_0_t: 'WiFi de Alta Velocidad',
+    svc_0_d: 'Fibra óptica hasta 1 Gbps. Streaming 4K sin interrupciones.',
+    svc_1_t: 'Limpieza Profesional',
+    svc_1_d: 'Servicio diario con productos ecológicos premium. Cambio de lencería.',
+    svc_2_t: 'Piscina Premium',
+    svc_2_d: 'Climatizadas, sal u ozono. Servicio de toallas y barra de refrescos.',
+    svc_3_t: 'Parking VIP',
+    svc_3_d: 'Garaje privado con punto de carga eléctrica. Valet disponible.',
+    svc_4_t: 'Climatización Total',
+    svc_4_d: 'Inverter última generación. Control por estancias y domótica integrada.',
+    svc_5_t: 'Cocina Gourmet',
+    svc_5_d: 'Gaggenau, Sub-Zero o Siemens. Menaje completo de chef incluido.',
+    svc_6_t: 'Seguridad 24/7',
+    svc_6_d: 'CCTV, alarma perimetral y portero electrónico. Respuesta en 5 min.',
+    svc_7_t: 'Conserjería Personal',
+    svc_7_d: '24h: reservas, transfers, chef, yate y experiencias exclusivas.',
+
+    /* Reseñas */
+    rev_eyebrow: 'Lo que dicen',
+    rev_title_1: 'Clientes',
+    rev_title_2: 'Satisfechos',
+
+    /* Contacto */
+    contact_eyebrow: 'Ponte en contacto',
+    contact_title_1: 'Hablemos',
+    contact_title_2: 'de tu propiedad',
+    contact_desc: 'Nuestro equipo de expertos está disponible para asesorarte en la compra, venta o alquiler de tu próxima propiedad de lujo.',
+    info_phone: 'Teléfono',
+    info_address: 'Dirección',
+
+    /* Formulario */
+    form_title: 'Envíanos un mensaje',
+    form_name_label: 'Nombre',
+    form_name: 'Nombre completo',
+    form_email_label: 'Email',
+    form_email: 'email@ejemplo.com',
+    form_phone_label: 'Teléfono',
+    form_phone: '+34 000 000 000',
+    form_message_label: 'Mensaje',
+    form_message: 'Cuéntanos qué estás buscando...',
+    form_send: 'Enviar mensaje',
+    form_ok: '¡Gracias! Te contactaremos en 24 horas.',
+    form_err: 'Algo salió mal. Inténtalo de nuevo.',
+
+    /* Mapa */
+    map_eyebrow: 'Encuéntranos',
+    map_title_1: 'Nuestra',
+    map_title_2: 'Oficina',
+
+    /* Footer */
+    footer_legal: 'Aviso Legal',
+    footer_privacy: 'Privacidad',
+    footer_cookies: 'Cookies',
+    footer_cookie_pref: '⚙️ Preferencias',
+    footer: '© 2026 Summer Dreams. Todos los derechos reservados.',
+
+    /* Modal de propiedad */
+    modal_desc_title: 'Descripción',
+    modal_feat_title: 'Características incluidas',
+    modal_details_title: 'Ficha técnica',
+    m_beds: 'Habitaciones',
+    m_baths: 'Baños',
+    m_area: 'Superficie',
+    m_year: 'Año construcción',
+    m_parking: 'Parking',
+    m_comm: 'Comunidad',
+    m_min: 'Mín. noches',
+    m_guests: 'Huéspedes máx.',
+    m_dep: 'Fianza',
+    m_cta_v: 'Solicitar información',
+    m_cta_a: 'Reservar ahora',
+  },
+
+  /* ── RUSO ── */
+  ru: {
+
+    /* Navegación */
+    nav_inicio: 'Главная',
+    nav_apart: 'Недвижимость',
+    nav_about: 'О нас',
+    nav_serv: 'Услуги',
+    nav_reviews: 'Отзывы',
+    nav_contact: 'Контакт',
+
+    /* Hero */
+    hero_eyebrow: 'Элитная недвижимость · Средиземноморье',
+    hero_line1: 'Summer',
+    hero_line2: 'Dreams',
+    hero_line3: 'Estate',
+    hero_desc: 'Эксклюзивная коллекция элитной недвижимости в самых желанных средиземноморских направлениях.',
+    hero_cta: 'Смотреть объекты',
+    hero_cta2: 'О компании',
+
+    /* Estadísticas */
+    stat_0: 'Лет',
+    stat_1: 'Клиентов',
+    stat_2: 'Объектов',
+    stat_3: 'Рейтинг',
+
+    /* Apartamentos */
+    apt_eyebrow: 'Откройте для себя',
+    apt_title_1: 'Наши',
+    apt_title_2: 'Объекты',
+    tab_venta: 'Продажа',
+    tab_alquiler: 'Аренда',
+
+    /* Nosotros */
+    about_eyebrow: 'Кто мы',
+    about_title_1: 'О компании',
+    about_title_2: 'Summer Dreams',
+    about_text: 'На протяжении более 15 лет Summer Dreams формирует эксклюзивную коллекцию элитной недвижимости в самых желанных уголках Средиземноморья.',
+    about_s0: 'Лет опыта',
+    about_s1: 'Довольных клиентов',
+    about_s2: 'Объектов',
+    about_s3: 'Рейтинг',
+
+    /* Servicios */
+    serv_eyebrow: 'Что мы предлагаем',
+    serv_title_1: 'Услуги',
+    serv_title_2: 'Премиум',
+    svc_0_t: 'Высокоскоростной WiFi',
+    svc_0_d: 'Оптоволокно до 1 Гбит/с. Стриминг 4K без прерываний.',
+    svc_1_t: 'Профессиональная уборка',
+    svc_1_d: 'Ежедневная уборка с экологичными продуктами.',
+    svc_2_t: 'Премиум бассейн',
+    svc_2_d: 'Подогреваемые бассейны с соляной/озоновой обработкой.',
+    svc_3_t: 'VIP парковка',
+    svc_3_d: 'Частное место с зарядкой для электромобилей.',
+    svc_4_t: 'Климат-контроль',
+    svc_4_d: 'Инверторные системы, умный дом.',
+    svc_5_t: 'Гурме кухня',
+    svc_5_d: 'Gaggenau, Sub-Zero или Siemens.',
+    svc_6_t: 'Охрана 24/7',
+    svc_6_d: 'CCTV, периметральная сигнализация.',
+    svc_7_t: 'Персональный консьерж',
+    svc_7_d: '24h: бронирование, трансфер, яхта.',
+
+    /* Reseñas */
+    rev_eyebrow: 'Отзывы',
+    rev_title_1: 'Довольные',
+    rev_title_2: 'Клиенты',
+
+    /* Contacto */
+    contact_eyebrow: 'Свяжитесь с нами',
+    contact_title_1: 'Поговорим',
+    contact_title_2: 'о вашей недвижимости',
+    contact_desc: 'Наши эксперты готовы проконсультировать вас по покупке, продаже или аренде элитной недвижимости.',
+    info_phone: 'Телефон',
+    info_address: 'Адрес',
+
+    /* Formulario */
+    form_title: 'Отправить сообщение',
+    form_name_label: 'Имя',
+    form_name: 'Полное имя',
+    form_email_label: 'Email',
+    form_email: 'email@example.com',
+    form_phone_label: 'Телефон',
+    form_phone: '+7 000 000 00 00',
+    form_message_label: 'Сообщение',
+    form_message: 'Расскажите, что вы ищете...',
+    form_send: 'Отправить',
+    form_ok: 'Спасибо! Свяжемся в течение 24 часов.',
+    form_err: 'Что-то пошло не так.',
+
+    /* Mapa */
+    map_eyebrow: 'Найдите нас',
+    map_title_1: 'Наш',
+    map_title_2: 'Офис',
+
+    /* Footer */
+    footer_legal: 'Правовая информация',
+    footer_privacy: 'Конфиденциальность',
+    footer_cookies: 'Cookies',
+    footer_cookie_pref: '⚙️ Настройки',
+    footer: '© 2026 Summer Dreams. Все права защищены.',
+
+    /* Modal de propiedad */
+    modal_desc_title: 'Описание',
+    modal_feat_title: 'Удобства',
+    modal_details_title: 'Характеристики',
+    m_beds: 'Спальни',
+    m_baths: 'Ванные',
+    m_area: 'Площадь',
+    m_year: 'Год постройки',
+    m_parking: 'Парковка',
+    m_comm: 'Комплекс',
+    m_min: 'Мин. ночей',
+    m_guests: 'Макс. гостей',
+    m_dep: 'Депозит',
+    m_cta_v: 'Запросить информацию',
+    m_cta_a: 'Забронировать',
+  },
+
+  /* ── INGLÉS ── */
+  en: {
+
+    /* Navegación */
+    nav_inicio: 'Home',
+    nav_apart: 'Properties',
+    nav_about: 'About',
+    nav_serv: 'Services',
+    nav_reviews: 'Reviews',
+    nav_contact: 'Contact',
+
+    /* Hero */
+    hero_eyebrow: 'Luxury Real Estate · Mediterranean',
+    hero_line1: 'Summer',
+    hero_line2: 'Dreams',
+    hero_line3: 'Estate',
+    hero_desc: 'Exclusive collection of luxury properties in the most desirable Mediterranean destinations.',
+    hero_cta: 'View Properties',
+    hero_cta2: 'About Us',
+
+    /* Estadísticas */
+    stat_0: 'Years',
+    stat_1: 'Clients',
+    stat_2: 'Properties',
+    stat_3: 'Satisfaction',
+
+    /* Apartamentos */
+    apt_eyebrow: 'Discover',
+    apt_title_1: 'Our',
+    apt_title_2: 'Properties',
+    tab_venta: 'For Sale',
+    tab_alquiler: 'Rental',
+
+    /* Nosotros */
+    about_eyebrow: 'Who we are',
+    about_title_1: 'About',
+    about_title_2: 'Summer Dreams',
+    about_s0: 'Years of Excellence',
+    about_s1: 'Happy Clients',
+    about_s2: 'Properties',
+    about_s3: 'Satisfaction',
+
+    /* Servicios */
+    serv_eyebrow: 'What we offer',
+    serv_title_1: 'Premium',
+    serv_title_2: 'Services',
+    svc_0_t: 'High-Speed WiFi',
+    svc_0_d: 'Fiber optic up to 1 Gbps. 4K streaming without interruptions.',
+    svc_1_t: 'Professional Cleaning',
+    svc_1_d: 'Daily cleaning with premium eco products.',
+    svc_2_t: 'Premium Pool',
+    svc_2_d: 'Heated, salt or ozone treated. Towel service and drinks bar.',
+    svc_3_t: 'VIP Parking',
+    svc_3_d: 'Private garage with EV charging. Valet available.',
+    svc_4_t: 'Full Climate Control',
+    svc_4_d: 'Latest Inverter systems and smart home.',
+    svc_5_t: 'Gourmet Kitchen',
+    svc_5_d: 'Gaggenau, Sub-Zero or Siemens appliances.',
+    svc_6_t: '24/7 Security',
+    svc_6_d: 'CCTV, alarm and perimeter monitoring.',
+    svc_7_t: 'Personal Concierge',
+    svc_7_d: '24h: bookings, transfers, chef, yacht.',
+
+    /* Reseñas */
+    rev_eyebrow: 'What they say',
+    rev_title_1: 'Happy',
+    rev_title_2: 'Clients',
+
+    /* Contacto */
+    contact_eyebrow: 'Get in touch',
+    contact_title_2: 'about your property',
+    info_phone: 'Phone',
+    info_address: 'Address',
+
+    /* Formulario */
+    form_title: 'Send us a message',
+    form_name_label: 'Name',
+    form_name: 'Full name',
+    form_email_label: 'Email',
+    form_email: 'email@example.com',
+    form_phone_label: 'Phone',
+    form_phone: '+1 000 000 0000',
+    form_message_label: 'Message',
+    form_message: 'Tell us what you are looking for...',
+    form_send: 'Send message',
+    form_err: 'Something went wrong.',
+
+    /* Mapa */
+    map_eyebrow: 'Find us',
+    map_title_1: 'Our',
+    map_title_2: 'Office',
+
+    /* Footer */
+    footer_legal: 'Legal Notice',
+    footer_privacy: 'Privacy',
+    footer_cookies: 'Cookies',
+    footer_cookie_pref: '⚙️ Preferences',
+    footer: '© 2026 Summer Dreams. All rights reserved.',
+
+    /* Modal de propiedad */
+    modal_desc_title: 'Description',
+    modal_feat_title: 'Included features',
+    modal_details_title: 'Technical sheet',
+    m_beds: 'Bedrooms',
+    m_baths: 'Bathrooms',
+    m_area: 'Area',
+    m_year: 'Year built',
+    m_parking: 'Parking',
+    m_comm: 'Community',
+    m_min: 'Min nights',
+    m_guests: 'Max guests',
+    m_dep: 'Deposit',
+    m_cta_v: 'Request information',
+    m_cta_a: 'Book now',
+  },
+
+};
 let lang='es', tab='venta', curApt=null, curType=null;
 
 /* ═══════════════════════════════════════════════════════════
    ICONOS SERVICIOS
 ═══════════════════════════════════════════════════════════ */
-const SVCI=[
+/* Iconos SVG para cada servicio (en orden: WiFi, Limpieza, Piscina, Parking, A/C, Cocina, Seguridad, Conserjería) */
+const SVCI = [
+  // Servicio 1: WiFi
   `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>`,
+  // Servicio 2: Limpieza/Tiempo
   `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+  // Servicio 3: Piscina
   `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M2 12h20M2 12c0-5.52 4.48-10 10-10s10 4.48 10 10M2 12c0 5.52 4.48 10 10 10s10-4.48 10-10"/></svg>`,
+  // Servicio 4: Parking
   `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>`,
+  // Servicio 5: A/C
   `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9.59 4.59A2 2 0 1111 8H2m10.59 11.41A2 2 0 1013 16H2m15.73-8.27A2.5 2.5 0 1119.5 12H2"/></svg>`,
+  // Servicio 6: Cocina
   `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 2.5a2.5 2.5 0 015 0 2.5 2.5 0 015 0v.006c0 .07 0 .27-.038.494M5.5 5h2m10.5 7v2h1l2 3H3l2-3h1v-2M3 8h18M2 8l1 5h18l1-5"/></svg>`,
+  // Servicio 7: Seguridad
   `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>`,
-  `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>`
+  // Servicio 8: Conserjería
+  `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>`,
 ];
 
 /* ═══════════════════════════════════════════════════════════
    RESEÑAS
 ═══════════════════════════════════════════════════════════ */
-const REVIEWS={
-  es:[
-    {t:"Una experiencia absolutamente increíble. El apartamento era exactamente como en las fotos, si no mejor. El equipo estuvo disponible en todo momento y anticiparon cada necesidad.",n:"María García",a:"Suite Brisa Oceánica",av:"https://i.pravatar.cc/150?img=47"},
-    {t:"Tercera vez con Summer Dreams y nunca nos han decepcionado. La atención al detalle y el servicio post-estancia son de nivel cinco estrellas.",n:"Carlos Rodríguez",a:"Villa Mediterránea",av:"https://i.pravatar.cc/150?img=12"},
-    {t:"El loft de Barcelona superó todas las expectativas. Diseño, ubicación y conserjería hacen de él la elección perfecta para una escapada urbana.",n:"Ana Martínez",a:"Loft Urbano BCN",av:"https://i.pravatar.cc/150?img=32"},
-    {t:"Conserjería impecable. Excursiones privadas, mejores restaurantes y una cena sorpresa en la terraza. Un servicio que marcó la diferencia.",n:"Pedro López",a:"Ático Skyline Miami",av:"https://i.pravatar.cc/150?img=68"},
-    {t:"El retiro en Bali fue transformador. Villa, equipo y chef privado superaron cualquier expectativa. Absolutamente volveremos.",n:"Laura Sánchez",a:"Retiro Tropical Bali",av:"https://i.pravatar.cc/150?img=25"},
-    {t:"La mansión de Costa Brava es perfecta. Privacidad, lujo y ubicación incomparables. La hemos repetido dos veces más.",n:"Javier Fernández",a:"Mansión Costa Brava",av:"https://i.pravatar.cc/150?img=53"}
-  ],
-  ru:[
-    {t:"Абсолютно невероятный опыт. Апартаменты были именно такими, как на фотографиях. Команда предвосхищала каждое желание.",n:"Мария Иванова",a:"Сюит «Бриз»",av:"https://i.pravatar.cc/150?img=47"},
-    {t:"Третий раз с Summer Dreams — никогда не разочаровывались. Пятизвёздочный уровень во всём.",n:"Алексей Смирнов",a:"Вилла Ибица",av:"https://i.pravatar.cc/150?img=12"},
-    {t:"Лофт в Барселоне превзошёл все ожидания. Дизайн, расположение и консьерж — идеальный городской отдых.",n:"Анна Петрова",a:"Городской лофт",av:"https://i.pravatar.cc/150?img=32"},
-    {t:"Безупречный сервис. Частные экскурсии и романтический ужин-сюрприз. Незабываемо.",n:"Дмитрий Козлов",a:"Пентхаус Майами",av:"https://i.pravatar.cc/150?img=68"},
-    {t:"Ретрит на Бали был трансформирующим. Вилла и личный повар превзошли все ожидания.",n:"Елена Новикова",a:"Ретрит Бали",av:"https://i.pravatar.cc/150?img=25"},
-    {t:"Особняк Коста-Брава просто идеален. Приватность и роскошь несравнимы. Приезжаем снова.",n:"Сергей Волков",a:"Особняк Коста-Брава",av:"https://i.pravatar.cc/150?img=53"}
-  ],
-  en:[
-    {t:"An absolutely incredible experience. The apartment was exactly as in the photos — the team anticipated our every need.",n:"Emily Johnson",a:"Ocean Breeze Suite",av:"https://i.pravatar.cc/150?img=47"},
-    {t:"Third time with Summer Dreams — they've never let us down. Five-star level in every detail.",n:"James Williams",a:"Ibiza Villa",av:"https://i.pravatar.cc/150?img=12"},
-    {t:"The Barcelona loft exceeded all expectations. Design, location and concierge make it perfect for an urban escape.",n:"Sophie Brown",a:"Urban Loft BCN",av:"https://i.pravatar.cc/150?img=32"},
-    {t:"Impeccable service. Private tours and a surprise terrace dinner. Truly made the difference.",n:"Michael Davis",a:"Miami Penthouse",av:"https://i.pravatar.cc/150?img=68"},
-    {t:"The Bali retreat was transformative. Villa, staff and private chef exceeded every expectation.",n:"Isabella Wilson",a:"Bali Retreat",av:"https://i.pravatar.cc/150?img=25"},
-    {t:"The Costa Brava mansion is simply perfect. Unmatched privacy and luxury. We have returned twice.",n:"Oliver Taylor",a:"Costa Brava Mansion",av:"https://i.pravatar.cc/150?img=53"}
-  ]
-};
+/* ═══════════════════════════════════════════════════════════
+   RESEÑAS DE CLIENTES — Una por idioma
+   Para añadir una reseña: copia un bloque {t,n,a,av} y
+   rellena los campos en los tres idiomas.
+═══════════════════════════════════════════════════════════ */
+const REVIEWS = {
 
+  /* ── Reseñas en Español ── */
+  es: [
+    {
+      t:  "Una experiencia absolutamente increíble. El apartamento era exactamente como en las fotos, si no mejor. El equipo estuvo disponible en todo momento y anticiparon cada necesidad.",
+      n:  "María García",
+      a:  "Suite Brisa Oceánica",
+      av: "https://i.pravatar.cc/150?img=47"
+    },
+    {
+      t:  "Tercera vez con Summer Dreams y nunca nos han decepcionado. La atención al detalle y el servicio post-estancia son de nivel cinco estrellas.",
+      n:  "Carlos Rodríguez",
+      a:  "Villa Mediterránea",
+      av: "https://i.pravatar.cc/150?img=12"
+    },
+    {
+      t:  "El loft de Barcelona superó todas las expectativas. Diseño, ubicación y conserjería hacen de él la elección perfecta para una escapada urbana.",
+      n:  "Ana Martínez",
+      a:  "Loft Urbano BCN",
+      av: "https://i.pravatar.cc/150?img=32"
+    },
+    {
+      t:  "Conserjería impecable. Excursiones privadas, mejores restaurantes y una cena sorpresa en la terraza. Un servicio que marcó la diferencia.",
+      n:  "Pedro López",
+      a:  "Ático Skyline Miami",
+      av: "https://i.pravatar.cc/150?img=68"
+    },
+    {
+      t:  "El retiro en Bali fue transformador. Villa, equipo y chef privado superaron cualquier expectativa. Absolutamente volveremos.",
+      n:  "Laura Sánchez",
+      a:  "Retiro Tropical Bali",
+      av: "https://i.pravatar.cc/150?img=25"
+    },
+    {
+      t:  "La mansión de Costa Brava es perfecta. Privacidad, lujo y ubicación incomparables. La hemos repetido dos veces más.",
+      n:  "Javier Fernández",
+      a:  "Mansión Costa Brava",
+      av: "https://i.pravatar.cc/150?img=53"
+    }
+  ],
+
+  /* ── Reseñas en Ruso ── */
+  ru: [
+    {
+      t:  "Абсолютно невероятный опыт. Апартаменты были именно такими, как на фотографиях. Команда предвосхищала каждое желание.",
+      n:  "Мария Иванова",
+      a:  "Сюит «Бриз»",
+      av: "https://i.pravatar.cc/150?img=47"
+    },
+    {
+      t:  "Третий раз с Summer Dreams — никогда не разочаровывались. Пятизвёздочный уровень во всём.",
+      n:  "Алексей Смирнов",
+      a:  "Вилла Ибица",
+      av: "https://i.pravatar.cc/150?img=12"
+    },
+    {
+      t:  "Лофт в Барселоне превзошёл все ожидания. Дизайн, расположение и консьерж — идеальный городской отдых.",
+      n:  "Анна Петрова",
+      a:  "Городской лофт",
+      av: "https://i.pravatar.cc/150?img=32"
+    },
+    {
+      t:  "Безупречный сервис. Частные экскурсии и романтический ужин-сюрприз. Незабываемо.",
+      n:  "Дмитрий Козлов",
+      a:  "Пентхаус Майами",
+      av: "https://i.pravatar.cc/150?img=68"
+    },
+    {
+      t:  "Ретрит на Бали был трансформирующим. Вилла и личный повар превзошли все ожидания.",
+      n:  "Елена Новикова",
+      a:  "Ретрит Бали",
+      av: "https://i.pravatar.cc/150?img=25"
+    },
+    {
+      t:  "Особняк Коста-Брава просто идеален. Приватность и роскошь несравнимы. Приезжаем снова.",
+      n:  "Сергей Волков",
+      a:  "Особняк Коста-Брава",
+      av: "https://i.pravatar.cc/150?img=53"
+    }
+  ],
+
+  /* ── Reseñas en Inglés ── */
+  en: [
+    {
+      t:  "An absolutely incredible experience. The apartment was exactly as in the photos — the team anticipated our every need.",
+      n:  "Emily Johnson",
+      a:  "Ocean Breeze Suite",
+      av: "https://i.pravatar.cc/150?img=47"
+    },
+    {
+      t:  "Third time with Summer Dreams — they've never let us down. Five-star level in every detail.",
+      n:  "James Williams",
+      a:  "Ibiza Villa",
+      av: "https://i.pravatar.cc/150?img=12"
+    },
+    {
+      t:  "The Barcelona loft exceeded all expectations. Design, location and concierge make it perfect for an urban escape.",
+      n:  "Sophie Brown",
+      a:  "Urban Loft BCN",
+      av: "https://i.pravatar.cc/150?img=32"
+    },
+    {
+      t:  "Impeccable service. Private tours and a surprise terrace dinner. Truly made the difference.",
+      n:  "Michael Davis",
+      a:  "Miami Penthouse",
+      av: "https://i.pravatar.cc/150?img=68"
+    },
+    {
+      t:  "The Bali retreat was transformative. Villa, staff and private chef exceeded every expectation.",
+      n:  "Isabella Wilson",
+      a:  "Bali Retreat",
+      av: "https://i.pravatar.cc/150?img=25"
+    },
+    {
+      t:  "The Costa Brava mansion is simply perfect. Unmatched privacy and luxury. We have returned twice.",
+      n:  "Oliver Taylor",
+      a:  "Costa Brava Mansion",
+      av: "https://i.pravatar.cc/150?img=53"
+    }
+  ],
+};
 /* ═══════════════════════════════════════════════════════════
    RENDER FUNCTIONS
 ═══════════════════════════════════════════════════════════ */
@@ -1539,7 +2314,12 @@ function rebuildRevs(l){
   observe();
 }
 
-const STATS_CFG=[{v:'15+',k:'about_s0'},{v:'10k+',k:'about_s1'},{v:'100%',k:'about_s2'},{v:'98%',k:'about_s3'}];
+const STATS_CFG = [
+  { v: '15+', k: 'about_s0' },
+  { v: '10k+', k: 'about_s1' },
+  { v: '100%', k: 'about_s2' },
+  { v: '98%', k: 'about_s3' },
+];
 function rebuildStats(t){
   document.getElementById('nos-stats').innerHTML=
     STATS_CFG.map(s=>`<div class="nos-stat"><div class="nos-stat-val">${s.v}</div><div class="nos-stat-lbl">${t[s.k]}</div></div>`).join('');
